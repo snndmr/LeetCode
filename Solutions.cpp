@@ -145,3 +145,159 @@ int Solutions::maximumWealth(std::vector<std::vector<int>>& accounts)
 
 	return maximumWealth;
 }
+
+int Solutions::mostWordsFound(std::vector<std::string>& sentences)
+{
+	int max = 0;
+
+	for (std::string& sentence : sentences)
+	{
+		int sum = 0;
+
+		for (char& letter : sentence)
+		{
+			if (isspace(letter))
+			{
+				sum++;
+			}
+		}
+
+		if (max < sum)
+		{
+			max = sum;
+		}
+	}
+
+	return max;
+}
+
+int Solutions::numIdenticalPairs(std::vector<int>& nums)
+{
+	std::unordered_map<int, int> dict;
+
+	for (int& num : nums)
+	{
+		dict[num]++;
+	}
+
+	int sum = 0;
+
+	for (std::pair<const int, int>& value : dict)
+	{
+		if (value.second > 1)
+		{
+			sum += value.second * (value.second - 1) / 2;
+		}
+	}
+
+	return sum;
+}
+
+int Solutions::minimumSum(int num)
+{
+	int nums[4] {};
+
+	for (int i = 0; i < 4; i++)
+	{
+		nums[i] = num % 10;
+		num /= 10;
+	}
+
+	std::sort(std::begin(nums), std::end(nums));
+
+	return 10 * (nums[0] + nums[1]) + nums[2] + nums[3];
+}
+
+Solutions::ParkingSystem::ParkingSystem(int big, int medium, int small)
+{
+	slots[0] = big;
+	slots[1] = medium;
+	slots[2] = small;
+}
+
+bool Solutions::ParkingSystem::addCar(int carType)
+{
+	return slots[carType - 1]-- > 0;
+}
+
+int Solutions::smallestEvenMultiple(int n)
+{
+	return n % 2 == 0 ? n : n * 2;
+}
+
+int Solutions::numJewelsInStones(std::string jewels, std::string stones)
+{
+	int sum = 0;
+
+	for (char& stone : stones)
+	{
+		for (char& jewel : jewels)
+		{
+			if (jewel == stone)
+			{
+				sum++;
+			}
+		}
+	}
+
+	return sum;
+}
+
+bool Solutions::isStrictlyPalindromic(int n)
+{
+	return n == 1 || n == 3;
+}
+
+std::vector<bool> Solutions::kidsWithCandies(std::vector<int>& candies, int extraCandies)
+{
+	int max = 0;
+
+	for (int& candy : candies)
+	{
+		if (max < candy)
+		{
+			max = candy;
+		}
+	}
+
+	std::vector<bool> greatest;
+
+	for (int& candy : candies)
+	{
+		greatest.push_back(candy + extraCandies >= max);
+	}
+
+	return greatest;
+}
+
+bool Solutions::checkTree(TreeNode* root)
+{
+	return root->val == root->left->val + root->right->val;
+}
+
+Solutions::TreeNode* isExist(Solutions::TreeNode* node, int targetValue)
+{
+	if (node == nullptr)
+	{
+		return nullptr;
+	}
+
+	if (node->val == targetValue)
+	{
+		return node;
+	}
+
+	Solutions::TreeNode* left = isExist(node->left, targetValue);
+
+	if (left != nullptr)
+	{
+		return left;
+	}
+
+	return isExist(node->right, targetValue);
+}
+
+Solutions::TreeNode* Solutions::getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target)
+{
+	return isExist(cloned, target->val);
+}
