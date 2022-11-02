@@ -118,5 +118,34 @@ public:
 	/// <summary>No: 20</summary>
 	/// <see href="https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/">1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree</see>
 	static TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target);
+
+	/// <summary>No: 21</summary>
+	/// <see href="https://leetcode.com/problems/deepest-leaves-sum/">1302. Deepest Leaves Sum</see>
+	static int deepestLeavesSum(TreeNode* root);
+
+	/// <summary>No: 22</summary>
+	/// <see href="https://leetcode.com/problems/merge-nodes-in-between-zeros/">2181. Merge Nodes in Between Zeros</see>
+	struct ListNode
+	{
+		int val;
+		ListNode* next;
+		ListNode() : val(0), next(nullptr) {}
+		ListNode(int x) : val(x), next(nullptr) {}
+		ListNode(int x, ListNode* next) : val(x), next(next) {}
+	};
+
+	static ListNode* mergeNodes(ListNode* head);
+
+	/// <summary>No: 23</summary>
+	/// <see href="https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/">1281. Subtract the Product and Sum of Digits of an Integer</see>
+	static int subtractProductAndSum(int n);
+
+	/// <summary>No: 24</summary>
+	/// <see href="https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/">1365. How Many Numbers Are Smaller Than the Current Number</see>
+	static std::vector<int> smallerNumbersThanCurrent(std::vector<int>& nums);
+
+	/// <summary>No: 25</summary>
+	/// <see href="https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/">1828. Queries on Number of Points Inside a Circle</see>
+	static std::vector<int> countPoints(std::vector<std::vector<int>>& points, std::vector<std::vector<int>>& queries);
 };
 

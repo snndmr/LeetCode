@@ -301,3 +301,128 @@ Solutions::TreeNode* Solutions::getTargetCopy(TreeNode* original, TreeNode* clon
 {
 	return isExist(cloned, target->val);
 }
+
+int Solutions::deepestLeavesSum(TreeNode* root)
+{
+	static int sum = 0;
+	static int height = 0;
+	static int maxHeight = 0;
+
+	if (root == nullptr)
+	{
+		return 0;
+	}
+
+	if (root->left != nullptr)
+	{
+		height += 1;
+		deepestLeavesSum(root->left);
+		height -= 1;
+	}
+
+	if (root->right != nullptr)
+	{
+		height += 1;
+		deepestLeavesSum(root->right);
+		height -= 1;
+	}
+
+	if (height >= maxHeight && root->left == nullptr && root->right == nullptr)
+	{
+		if (height > maxHeight)
+		{
+			sum = 0;
+			maxHeight = height;
+		}
+
+		sum += root->val;
+	}
+
+	return sum;
+}
+
+Solutions::ListNode* Solutions::mergeNodes(ListNode* head)
+{
+	ListNode* sumListHead = new ListNode(0);
+	ListNode* sumListIter = sumListHead;
+
+	while (head->next != nullptr)
+	{
+		head = head->next;
+
+		if (head->val == 0 && head->next != nullptr)
+		{
+			sumListIter->next = new ListNode(0);
+			sumListIter = sumListIter->next;
+		}
+		else
+		{
+			sumListIter->val += head->val;
+		}
+	}
+
+	return sumListHead;
+}
+
+int Solutions::subtractProductAndSum(int n)
+{
+	int sum = 0;
+	int product = 1;
+
+	while (n > 0)
+	{
+		int temp = n % 10;
+
+		sum += temp;
+		product *= temp;
+
+		n /= 10;
+	}
+
+	return product - sum;
+}
+
+std::vector<int> Solutions::smallerNumbersThanCurrent(std::vector<int>& nums)
+{
+	std::vector<int> sorted(nums.size());
+	partial_sort_copy(begin(nums), end(nums), begin(sorted), end(sorted));
+
+	int lastNum = 0;
+	int indexOfNum = 0;
+	std::vector<int> result;
+
+	for (int& num : nums)
+	{
+		if (lastNum != num)
+		{
+			indexOfNum = std::find(sorted.begin(), sorted.end(), num) - sorted.begin();
+		}
+
+		lastNum = num;
+		result.push_back(indexOfNum);
+	}
+
+	return result;
+}
+
+std::vector<int> Solutions::countPoints(std::vector<std::vector<int>>& points, std::vector<std::vector<int>>& queries)
+{
+	std::vector<int> result;
+
+	for (std::vector<int>& query : queries)
+	{
+		int count = 0;
+
+		for (std::vector<int>& point : points)
+		{
+			if (sqrt(pow(point[0] - query[0], 2) + pow(point[1] - query[1], 2)) <= query[2])
+			{
+				count += 1;
+			}
+		}
+
+		result.push_back(count);
+	}
+
+	return result;
+}

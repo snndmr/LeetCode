@@ -2,13 +2,21 @@
 
 #include "Solutions.h"
 
-int main()
-{
-	Solutions::TreeNode* tree = new Solutions::TreeNode(7);
-	tree->left = new Solutions::TreeNode(4);
-	tree->right = new Solutions::TreeNode(3);
-	tree->right->left = new Solutions::TreeNode(6);
-	tree->right->right = new Solutions::TreeNode(19);
+int main() {
+	/*Solutions::ListNode* head = new Solutions::ListNode(0);
 
-	auto res = Solutions::getTargetCopy(tree, tree, tree->right);
+	head->next = new Solutions::ListNode(1);
+	head->next->next = new Solutions::ListNode(0);
+	head->next->next->next = new Solutions::ListNode(3);
+	head->next->next->next->next = new Solutions::ListNode(0);
+	head->next->next->next->next->next = new Solutions::ListNode(2);
+	head->next->next->next->next->next->next = new Solutions::ListNode(2);
+	head->next->next->next->next->next->next->next = new Solutions::ListNode(0);*/
+
+	Solutions::ListNode* head = new Solutions::ListNode(0);
+
+	head->next = new Solutions::ListNode(1);
+	head->next->next = new Solutions::ListNode(0);
+
+	auto result = Solutions::mergeNodes(head);
 }
