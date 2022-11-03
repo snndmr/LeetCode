@@ -426,3 +426,117 @@ std::vector<int> Solutions::countPoints(std::vector<std::vector<int>>& points, s
 
 	return result;
 }
+
+std::string Solutions::interpret(std::string command)
+{
+	std::string result;
+
+	for (std::string::iterator i = command.begin(); i < command.end(); i++)
+	{
+		if (*i == '(')
+		{
+			if (*(i + 1) == ')')
+			{
+				result += 'o';
+				i += 1;
+			}
+			else
+			{
+				result += "al";
+				i += 3;
+			}
+		}
+		else
+		{
+			result += *i;
+		}
+	}
+
+	return result;
+}
+
+int Solutions::maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid)
+{
+	std::vector<int> rowsMaxs;
+	std::vector<int> columnsMaxs;
+
+	const uint8_t size = grid.size();
+
+	for (uint8_t i = 0; i < size; i++)
+	{
+		int rowMax = 0;
+		int colMax = 0;
+
+		for (uint8_t j = 0; j < size; j++)
+		{
+			if (grid[i][j] > rowMax)
+			{
+				rowMax = grid[i][j];
+			}
+
+			if (grid[j][i] > colMax)
+			{
+				colMax = grid[j][i];
+			}
+		}
+
+		rowsMaxs.push_back(rowMax);
+		columnsMaxs.push_back(colMax);
+	}
+
+	int sum = 0;
+
+	for (uint8_t i = 0; i < size; i++)
+	{
+		for (uint8_t j = 0; j < size; j++)
+		{
+			int minMax = rowsMaxs[i] > columnsMaxs[j] ? columnsMaxs[j] : rowsMaxs[i];
+
+			if (grid[i][j] < minMax)
+			{
+				sum += minMax - grid[i][j];
+			}
+		}
+	}
+
+	return sum;
+}
+
+std::vector<int> Solutions::decode(std::vector<int>& encoded, int first)
+{
+	std::vector<int> decoded { first };
+
+	for (int& num : encoded)
+	{
+		decoded.push_back(*(decoded.end() - 1) ^ num);
+	}
+
+	return decoded;
+}
+
+std::vector<int> Solutions::decompressRLElist(std::vector<int>& nums)
+{
+	std::vector<int> result;
+
+	for (std::vector<int>::iterator i = nums.begin(); i < nums.end(); i += 2)
+	{
+		for (int j = 0; j < *i; j++)
+		{
+			result.push_back(*(i + 1));
+		}
+	}
+
+	return result;
+}
+
+std::vector<int> Solutions::createTargetArray(std::vector<int>& nums, std::vector<int>& index)
+{
+	std::vector<int> target;
+
+	for (size_t i = 0; i < nums.size(); i++)
+	{
+		target.insert(target.begin() + index[i], nums[i]);
+	}
+
+	return target;
+}

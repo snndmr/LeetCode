@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <iostream>
 #include <algorithm>
 #include <unordered_map>
 
@@ -147,5 +148,25 @@ public:
 	/// <summary>No: 25</summary>
 	/// <see href="https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/">1828. Queries on Number of Points Inside a Circle</see>
 	static std::vector<int> countPoints(std::vector<std::vector<int>>& points, std::vector<std::vector<int>>& queries);
+
+	/// <summary>No: 26</summary>
+	/// <see href="https://leetcode.com/problems/goal-parser-interpretation/">1678. Goal Parser Interpretation</see>
+	static std::string interpret(std::string command);
+
+	/// <summary>No: 27</summary>
+	/// <see href="https://leetcode.com/problems/max-increase-to-keep-city-skyline/">807. Max Increase to Keep City Skyline</see>
+	static int maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid);
+
+	/// <summary>No: 28</summary>
+	/// <see href="https://leetcode.com/problems/decode-xored-array/">1720. Decode XORed Array</see>
+	static std::vector<int> decode(std::vector<int>& encoded, int first);
+
+	/// <summary>No: 29</summary>
+	/// <see href="https://leetcode.com/problems/decompress-run-length-encoded-list/">1313. Decompress Run-Length Encoded List</see>
+	static std::vector<int> decompressRLElist(std::vector<int>& nums);
+
+	/// <summary>No: 30</summary>
+	/// <see href="https://leetcode.com/problems/create-target-array-in-the-given-order/">1389. Create Target Array in the Given Order</see>
+	static std::vector<int> createTargetArray(std::vector<int>& nums, std::vector<int>& index);
 };
 
