@@ -540,3 +540,67 @@ std::vector<int> Solutions::createTargetArray(std::vector<int>& nums, std::vecto
 
 	return target;
 }
+
+std::unordered_map<std::string, std::string> dict;
+
+std::string Solutions::encode(std::string longUrl)
+{
+	const std::string serverURL = "http://tinyurl.com/";
+	const std::string characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	srand(time(nullptr));
+
+	const int loop = rand() % 5 + 5;
+	const int size = characters.size();
+
+	std::string encoded = serverURL;
+
+	for (int i = 0; i < loop; i++)
+	{
+		encoded += characters[rand() % size];
+	}
+
+	dict[encoded] = longUrl;
+
+	return encoded;
+}
+
+std::string Solutions::decode(std::string shortUrl)
+{
+	return dict[shortUrl];
+}
+
+std::vector<std::vector<int>> Solutions::groupThePeople(std::vector<int>& groupSizes)
+{
+	std::unordered_map<int, std::vector<int>> dict;
+
+	for (size_t i = 0; i < groupSizes.size(); i++)
+	{
+		dict[groupSizes[i]].push_back(i);
+	}
+
+	std::vector<std::vector<int>> result;
+
+	for (std::pair<const int, std::vector<int>> group : dict)
+	{
+		for (size_t i = 0; i < group.second.size(); i += group.first)
+		{
+			result.push_back({ group.second.begin() + i, group.second.begin() + i + group.first });
+		}
+	}
+
+	return result;
+}
+
+std::string Solutions::restoreString(std::string s, std::vector<int>& indices)
+{
+	const size_t size = s.size();
+	std::string restored(size, ' ');
+
+	for (size_t i = 0; i < size; i++)
+	{
+		restored[indices[i]] = s[i];
+	}
+
+	return restored;
+}

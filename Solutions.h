@@ -168,5 +168,20 @@ public:
 	/// <summary>No: 30</summary>
 	/// <see href="https://leetcode.com/problems/create-target-array-in-the-given-order/">1389. Create Target Array in the Given Order</see>
 	static std::vector<int> createTargetArray(std::vector<int>& nums, std::vector<int>& index);
+
+	/// <summary>No: 31</summary>
+	/// <see href="https://leetcode.com/problems/encode-and-decode-tinyurl/">535. Encode and Decode TinyURL</see>
+	static std::string encode(std::string longUrl);
+
+	static std::string decode(std::string shortUrl);
+
+	/// <summary>No: 32</summary>
+	/// <see href="https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/">1282. Group the People Given the Group Size They Belong To</see>
+	static std::vector<std::vector<int>> groupThePeople(std::vector<int>& groupSizes);
+
+	/// <summary>No: 33</summary>
+	/// <see href="https://leetcode.com/problems/shuffle-string/">1528. Shuffle String</see>
+	static std::string restoreString(std::string s, std::vector<int>& indices);
+
 };
 
