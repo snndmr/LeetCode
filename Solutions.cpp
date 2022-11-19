@@ -395,7 +395,7 @@ std::vector<int> Solutions::smallerNumbersThanCurrent(std::vector<int>& nums)
 	{
 		if (lastNum != num)
 		{
-			indexOfNum = std::find(sorted.begin(), sorted.end(), num) - sorted.begin();
+			indexOfNum = static_cast<int>(std::find(sorted.begin(), sorted.end(), num) - sorted.begin());
 		}
 
 		lastNum = num;
@@ -460,7 +460,7 @@ int Solutions::maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid)
 	std::vector<int> rowsMaxs;
 	std::vector<int> columnsMaxs;
 
-	const uint8_t size = grid.size();
+	const size_t size = grid.size();
 
 	for (uint8_t i = 0; i < size; i++)
 	{
@@ -548,10 +548,10 @@ std::string Solutions::encode(std::string longUrl)
 	const std::string serverURL = "http://tinyurl.com/";
 	const std::string characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	srand(time(nullptr));
+	srand(static_cast<uint32_t>(time(nullptr)));
 
 	const int loop = rand() % 5 + 5;
-	const int size = characters.size();
+	const size_t size = characters.size();
 
 	std::string encoded = serverURL;
 
@@ -574,7 +574,7 @@ std::vector<std::vector<int>> Solutions::groupThePeople(std::vector<int>& groupS
 {
 	std::unordered_map<int, std::vector<int>> dict;
 
-	for (size_t i = 0; i < groupSizes.size(); i++)
+	for (int i = 0; i < groupSizes.size(); i++)
 	{
 		dict[groupSizes[i]].push_back(i);
 	}
@@ -603,4 +603,25 @@ std::string Solutions::restoreString(std::string s, std::vector<int>& indices)
 	}
 
 	return restored;
+}
+
+std::vector<std::string> Solutions::cellsInRange(std::string s)
+{
+	std::vector<std::string> cells;
+
+	for (int i = s[0]; i <= s[3]; i++)
+	{
+		for (int j = s[1]; j <= s[4]; j++)
+		{
+			cells.push_back(static_cast<char>(i) + std::to_string(j - '0'));
+		}
+	}
+
+	return cells;
+}
+
+int Solutions::averageOfSubtree(TreeNode* root)
+{
+	// TODO: I will solve later.
+	return 0;
 }

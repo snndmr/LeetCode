@@ -183,5 +183,13 @@ public:
 	/// <see href="https://leetcode.com/problems/shuffle-string/">1528. Shuffle String</see>
 	static std::string restoreString(std::string s, std::vector<int>& indices);
 
+	/// <summary>No: 34</summary>
+	/// <see href="https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet/">2194. Cells in a Range on an Excel Sheet</see>
+	static std::vector<std::string> cellsInRange(std::string s);
+
+	/// <summary>No: 35</summary>
+	/// <see href="https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/">2265. Count Nodes Equal to Average of Subtree</see>
+	static int averageOfSubtree(TreeNode* root);
+
 };
 

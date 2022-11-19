@@ -4,7 +4,15 @@
 
 int main()
 {
-	std::vector<int> p { 3,3,3,3,3,1,3 };
-	//std::vector<int> p { 2,1,3,3,3,2 };
-	auto test = Solutions::groupThePeople(p);
+	Solutions::TreeNode* tree = new Solutions::TreeNode(4);
+
+	tree->left = new Solutions::TreeNode(8);
+	tree->left->right = new Solutions::TreeNode(8);
+	tree->left->left = new Solutions::TreeNode(0);
+	tree->left->right = new Solutions::TreeNode(1);
+
+	tree->right = new Solutions::TreeNode(5);
+	tree->right->right = new Solutions::TreeNode(6);
+
+	Solutions::averageOfSubtree(tree);
 }
