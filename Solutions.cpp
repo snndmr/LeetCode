@@ -1,8 +1,11 @@
 #include "Solutions.h"
 
-std::vector<int> Solutions::getConcatenation(std::vector<int>& nums)
+#include <algorithm>
+#include <unordered_map>
+
+std::vector<int> solutions::get_concatenation(const std::vector<int>& nums)
 {
-	size_t size = nums.size();
+	const size_t size = nums.size();
 
 	std::vector<int> concatenated(2 * size);
 
@@ -15,9 +18,9 @@ std::vector<int> Solutions::getConcatenation(std::vector<int>& nums)
 	return concatenated;
 }
 
-std::vector<int> Solutions::buildArray(std::vector<int>& nums)
+std::vector<int> solutions::build_array(const std::vector<int>& nums)
 {
-	size_t size = nums.size();
+	const size_t size = nums.size();
 
 	std::vector<int> permutated(size);
 
@@ -29,36 +32,36 @@ std::vector<int> Solutions::buildArray(std::vector<int>& nums)
 	return permutated;
 }
 
-int Solutions::sum(int num1, int num2)
+int solutions::sum(const int num1, const int num2)
 {
 	return num1 + num2;
 }
 
-std::vector<int> Solutions::runningSum(std::vector<int>& nums)
+std::vector<int> solutions::running_sum(const std::vector<int>& nums)
 {
-	size_t size = nums.size();
+	const size_t size = nums.size();
 
-	std::vector<int> sumOfNums(size);
+	std::vector<int> sum_of_nums(size);
 
-	sumOfNums[0] = nums[0];
+	sum_of_nums[0] = nums[0];
 
 	for (size_t i = 1; i < size; i++)
 	{
-		sumOfNums[i] = nums[i] + sumOfNums[i - 1];
+		sum_of_nums[i] = nums[i] + sum_of_nums[i - 1];
 	}
 
-	return sumOfNums;
+	return sum_of_nums;
 }
 
-int Solutions::minPartitions(std::string n)
+int solutions::min_partitions(const std::string& n)
 {
 	int max = 0;
 
-	for (size_t i = 0; i < n.size(); i++)
+	for (const char i : n)
 	{
-		if (n[i] - '0' > max)
+		if (i - '0' > max)
 		{
-			max = n[i] - '0';
+			max = i - '0';
 		}
 
 		if (max == 9)
@@ -70,30 +73,31 @@ int Solutions::minPartitions(std::string n)
 	return max;
 }
 
-std::string Solutions::defangIPaddr(std::string address)
+std::string solutions::defang_ip_addr(const std::string& address)
 {
 	std::string replaced;
 
-	for (size_t i = 0; i < address.size(); i++)
+	for (const char c : address)
 	{
-		if (address[i] == '.')
+		if (c == '.')
 		{
 			replaced += "[.]";
 		}
 		else
 		{
-			replaced += address[i];
+			replaced += c;
 		}
 	}
 
 	return replaced;
 }
 
-int Solutions::finalValueAfterOperations(std::vector<std::string>& operations)
+int solutions::final_value_after_operations(std::vector<std::string>& operations)
 {
 	int value = 0;
 
-	for (std::string& operation : operations) {
+	for (std::string& operation : operations)
+	{
 		if (operation[1] == '-') value--;
 		else value++;
 	}
@@ -101,11 +105,11 @@ int Solutions::finalValueAfterOperations(std::vector<std::string>& operations)
 	return value;
 }
 
-std::vector<int> Solutions::shuffle(std::vector<int>& nums, int n)
+std::vector<int> solutions::shuffle(const std::vector<int>& nums, const int n)
 {
-	std::vector<int> shuffled(2 * n);
+	std::vector<int> shuffled(static_cast<size_t>(2 * n));
 
-	for (size_t i = 0; i < n; i++)
+	for (size_t i = 0; i < static_cast<size_t>(n); i++)
 	{
 		shuffled[2 * i] = nums[i];
 		shuffled[2 * i + 1] = nums[n + i];
@@ -114,29 +118,31 @@ std::vector<int> Solutions::shuffle(std::vector<int>& nums, int n)
 	return shuffled;
 }
 
-Solutions::SubrectangleQueries::SubrectangleQueries(std::vector<std::vector<int>>& rectangle) : rectangle(rectangle) {}
+solutions::SubrectangleQueries::SubrectangleQueries(std::vector<std::vector<int>>& rectangle) : rectangle(rectangle) {}
 
-void Solutions::SubrectangleQueries::updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
+void solutions::SubrectangleQueries::update_subrectangle(const int row1, const int col1, const int row2, const int col2,
+                                                         const int new_value) const
 {
 	for (int i = row1; i <= row2; i++)
 	{
 		for (int j = col1; j <= col2; j++)
 		{
-			rectangle[i][j] = newValue;
+			rectangle[i][j] = new_value;
 		}
 	}
 }
 
-int Solutions::SubrectangleQueries::getValue(int row, int col)
+int solutions::SubrectangleQueries::get_value(const int row, const int col) const
 {
 	return rectangle[row][col];
 }
 
-int Solutions::maximumWealth(std::vector<std::vector<int>>& accounts)
+int solutions::maximum_wealth(const std::vector<std::vector<int>>& accounts)
 {
 	int maximumWealth = 0;
 
-	for (const std::vector<int>& account : accounts) {
+	for (const std::vector<int>& account : accounts)
+	{
 		int sum = 0;
 
 		for (const int& money : account) sum += money;
@@ -146,7 +152,7 @@ int Solutions::maximumWealth(std::vector<std::vector<int>>& accounts)
 	return maximumWealth;
 }
 
-int Solutions::mostWordsFound(std::vector<std::string>& sentences)
+int solutions::most_words_found(std::vector<std::string>& sentences)
 {
 	int max = 0;
 
@@ -154,7 +160,7 @@ int Solutions::mostWordsFound(std::vector<std::string>& sentences)
 	{
 		int sum = 0;
 
-		for (char& letter : sentence)
+		for (const char& letter : sentence)
 		{
 			if (isspace(letter))
 			{
@@ -171,7 +177,7 @@ int Solutions::mostWordsFound(std::vector<std::string>& sentences)
 	return max;
 }
 
-int Solutions::numIdenticalPairs(std::vector<int>& nums)
+int solutions::num_identical_pairs(std::vector<int>& nums)
 {
 	std::unordered_map<int, int> dict;
 
@@ -182,7 +188,7 @@ int Solutions::numIdenticalPairs(std::vector<int>& nums)
 
 	int sum = 0;
 
-	for (std::pair<const int, int>& value : dict)
+	for (const std::pair<const int, int>& value : dict)
 	{
 		if (value.second > 1)
 		{
@@ -193,13 +199,13 @@ int Solutions::numIdenticalPairs(std::vector<int>& nums)
 	return sum;
 }
 
-int Solutions::minimumSum(int num)
+int solutions::minimum_sum(int num)
 {
-	int nums[4] {};
+	int nums[4]{};
 
-	for (int i = 0; i < 4; i++)
+	for (int& i : nums)
 	{
-		nums[i] = num % 10;
+		i = num % 10;
 		num /= 10;
 	}
 
@@ -208,30 +214,30 @@ int Solutions::minimumSum(int num)
 	return 10 * (nums[0] + nums[1]) + nums[2] + nums[3];
 }
 
-Solutions::ParkingSystem::ParkingSystem(int big, int medium, int small)
+solutions::parking_system::parking_system(const int big, const int medium, const int small)
 {
 	slots[0] = big;
 	slots[1] = medium;
 	slots[2] = small;
 }
 
-bool Solutions::ParkingSystem::addCar(int carType)
+bool solutions::parking_system::add_car(const int car_type)
 {
-	return slots[carType - 1]-- > 0;
+	return slots[car_type - 1]-- > 0;
 }
 
-int Solutions::smallestEvenMultiple(int n)
+int solutions::smallest_even_multiple(const int n)
 {
 	return n % 2 == 0 ? n : n * 2;
 }
 
-int Solutions::numJewelsInStones(std::string jewels, std::string stones)
+int solutions::num_jewels_in_stones(const std::string& jewels, const std::string& stones)
 {
 	int sum = 0;
 
-	for (char& stone : stones)
+	for (const char& stone : stones)
 	{
-		for (char& jewel : jewels)
+		for (const char& jewel : jewels)
 		{
 			if (jewel == stone)
 			{
@@ -243,16 +249,16 @@ int Solutions::numJewelsInStones(std::string jewels, std::string stones)
 	return sum;
 }
 
-bool Solutions::isStrictlyPalindromic(int n)
+bool solutions::is_strictly_palindromic(const int n)
 {
 	return n == 1 || n == 3;
 }
 
-std::vector<bool> Solutions::kidsWithCandies(std::vector<int>& candies, int extraCandies)
+std::vector<bool> solutions::kids_with_candies(const std::vector<int>& candies, const int extra_candies)
 {
 	int max = 0;
 
-	for (int& candy : candies)
+	for (const int& candy : candies)
 	{
 		if (max < candy)
 		{
@@ -262,47 +268,48 @@ std::vector<bool> Solutions::kidsWithCandies(std::vector<int>& candies, int extr
 
 	std::vector<bool> greatest;
 
-	for (int& candy : candies)
+	greatest.reserve(candies.size());
+	for (const int& candy : candies)
 	{
-		greatest.push_back(candy + extraCandies >= max);
+		greatest.push_back(candy + extra_candies >= max);
 	}
 
 	return greatest;
 }
 
-bool Solutions::checkTree(TreeNode* root)
+bool solutions::check_tree(const tree_node* root)
 {
 	return root->val == root->left->val + root->right->val;
 }
 
-Solutions::TreeNode* isExist(Solutions::TreeNode* node, int targetValue)
+solutions::tree_node* is_exist(solutions::tree_node* node, const int target_value)
 {
 	if (node == nullptr)
 	{
 		return nullptr;
 	}
 
-	if (node->val == targetValue)
+	if (node->val == target_value)
 	{
 		return node;
 	}
 
-	Solutions::TreeNode* left = isExist(node->left, targetValue);
+	solutions::tree_node* left = is_exist(node->left, target_value);
 
 	if (left != nullptr)
 	{
 		return left;
 	}
 
-	return isExist(node->right, targetValue);
+	return is_exist(node->right, target_value);
 }
 
-Solutions::TreeNode* Solutions::getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target)
+solutions::tree_node* solutions::get_target_copy(tree_node* original, tree_node* cloned, const tree_node* target)
 {
-	return isExist(cloned, target->val);
+	return is_exist(cloned, target->val);
 }
 
-int Solutions::deepestLeavesSum(TreeNode* root)
+int solutions::deepest_leaves_sum(const tree_node* root)
 {
 	static int sum = 0;
 	static int height = 0;
@@ -316,14 +323,14 @@ int Solutions::deepestLeavesSum(TreeNode* root)
 	if (root->left != nullptr)
 	{
 		height += 1;
-		deepestLeavesSum(root->left);
+		deepest_leaves_sum(root->left);
 		height -= 1;
 	}
 
 	if (root->right != nullptr)
 	{
 		height += 1;
-		deepestLeavesSum(root->right);
+		deepest_leaves_sum(root->right);
 		height -= 1;
 	}
 
@@ -341,10 +348,10 @@ int Solutions::deepestLeavesSum(TreeNode* root)
 	return sum;
 }
 
-Solutions::ListNode* Solutions::mergeNodes(ListNode* head)
+solutions::list_node* solutions::merge_nodes(const list_node* head)
 {
-	ListNode* sumListHead = new ListNode(0);
-	ListNode* sumListIter = sumListHead;
+	const auto sum_list_head = new list_node(0);
+	list_node* sum_list_iter = sum_list_head;
 
 	while (head->next != nullptr)
 	{
@@ -352,26 +359,26 @@ Solutions::ListNode* Solutions::mergeNodes(ListNode* head)
 
 		if (head->val == 0 && head->next != nullptr)
 		{
-			sumListIter->next = new ListNode(0);
-			sumListIter = sumListIter->next;
+			sum_list_iter->next = new list_node(0);
+			sum_list_iter = sum_list_iter->next;
 		}
 		else
 		{
-			sumListIter->val += head->val;
+			sum_list_iter->val += head->val;
 		}
 	}
 
-	return sumListHead;
+	return sum_list_head;
 }
 
-int Solutions::subtractProductAndSum(int n)
+int solutions::subtract_product_and_sum(int n)
 {
 	int sum = 0;
 	int product = 1;
 
 	while (n > 0)
 	{
-		int temp = n % 10;
+		const int temp = n % 10;
 
 		sum += temp;
 		product *= temp;
@@ -382,7 +389,7 @@ int Solutions::subtractProductAndSum(int n)
 	return product - sum;
 }
 
-std::vector<int> Solutions::smallerNumbersThanCurrent(std::vector<int>& nums)
+std::vector<int> solutions::smaller_numbers_than_current(std::vector<int>& nums)
 {
 	std::vector<int> sorted(nums.size());
 	partial_sort_copy(begin(nums), end(nums), begin(sorted), end(sorted));
@@ -405,7 +412,7 @@ std::vector<int> Solutions::smallerNumbersThanCurrent(std::vector<int>& nums)
 	return result;
 }
 
-std::vector<int> Solutions::countPoints(std::vector<std::vector<int>>& points, std::vector<std::vector<int>>& queries)
+std::vector<int> solutions::count_points(std::vector<std::vector<int>>& points, std::vector<std::vector<int>>& queries)
 {
 	std::vector<int> result;
 
@@ -427,11 +434,11 @@ std::vector<int> Solutions::countPoints(std::vector<std::vector<int>>& points, s
 	return result;
 }
 
-std::string Solutions::interpret(std::string command)
+std::string solutions::interpret(std::string command)
 {
 	std::string result;
 
-	for (std::string::iterator i = command.begin(); i < command.end(); i++)
+	for (auto i = command.begin(); i < command.end(); ++i)
 	{
 		if (*i == '(')
 		{
@@ -455,33 +462,33 @@ std::string Solutions::interpret(std::string command)
 	return result;
 }
 
-int Solutions::maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid)
+int solutions::max_increase_keeping_skyline(const std::vector<std::vector<int>>& grid)
 {
-	std::vector<int> rowsMaxs;
-	std::vector<int> columnsMaxs;
+	std::vector<int> rows_max;
+	std::vector<int> columns_max;
 
 	const size_t size = grid.size();
 
 	for (uint8_t i = 0; i < size; i++)
 	{
-		int rowMax = 0;
-		int colMax = 0;
+		int row_max = 0;
+		int col_max = 0;
 
 		for (uint8_t j = 0; j < size; j++)
 		{
-			if (grid[i][j] > rowMax)
+			if (grid[i][j] > row_max)
 			{
-				rowMax = grid[i][j];
+				row_max = grid[i][j];
 			}
 
-			if (grid[j][i] > colMax)
+			if (grid[j][i] > col_max)
 			{
-				colMax = grid[j][i];
+				col_max = grid[j][i];
 			}
 		}
 
-		rowsMaxs.push_back(rowMax);
-		columnsMaxs.push_back(colMax);
+		rows_max.push_back(row_max);
+		columns_max.push_back(col_max);
 	}
 
 	int sum = 0;
@@ -490,11 +497,11 @@ int Solutions::maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid)
 	{
 		for (uint8_t j = 0; j < size; j++)
 		{
-			int minMax = rowsMaxs[i] > columnsMaxs[j] ? columnsMaxs[j] : rowsMaxs[i];
+			const int min_max = rows_max[i] > columns_max[j] ? columns_max[j] : rows_max[i];
 
-			if (grid[i][j] < minMax)
+			if (grid[i][j] < min_max)
 			{
-				sum += minMax - grid[i][j];
+				sum += min_max - grid[i][j];
 			}
 		}
 	}
@@ -502,11 +509,11 @@ int Solutions::maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid)
 	return sum;
 }
 
-std::vector<int> Solutions::decode(std::vector<int>& encoded, int first)
+std::vector<int> solutions::decode(const std::vector<int>& encoded, const int first)
 {
-	std::vector<int> decoded { first };
+	std::vector<int> decoded{first};
 
-	for (int& num : encoded)
+	for (const int& num : encoded)
 	{
 		decoded.push_back(*(decoded.end() - 1) ^ num);
 	}
@@ -514,11 +521,11 @@ std::vector<int> Solutions::decode(std::vector<int>& encoded, int first)
 	return decoded;
 }
 
-std::vector<int> Solutions::decompressRLElist(std::vector<int>& nums)
+std::vector<int> solutions::decompress_rle_list(std::vector<int>& nums)
 {
 	std::vector<int> result;
 
-	for (std::vector<int>::iterator i = nums.begin(); i < nums.end(); i += 2)
+	for (auto i = nums.begin(); i < nums.end(); i += 2)
 	{
 		for (int j = 0; j < *i; j++)
 		{
@@ -529,7 +536,7 @@ std::vector<int> Solutions::decompressRLElist(std::vector<int>& nums)
 	return result;
 }
 
-std::vector<int> Solutions::createTargetArray(std::vector<int>& nums, std::vector<int>& index)
+std::vector<int> solutions::create_target_array(const std::vector<int>& nums, const std::vector<int>& index)
 {
 	std::vector<int> target;
 
@@ -543,56 +550,57 @@ std::vector<int> Solutions::createTargetArray(std::vector<int>& nums, std::vecto
 
 std::unordered_map<std::string, std::string> dict;
 
-std::string Solutions::encode(std::string longUrl)
+std::string solutions::encode(const std::string& long_url)
 {
-	const std::string serverURL = "http://tinyurl.com/";
+	const std::string server_url = "http://tinyurl.com/";
 	const std::string characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	srand(static_cast<uint32_t>(time(nullptr)));
+	srand(static_cast<uint32_t>(time(nullptr))); // NOLINT(cert-msc51-cpp)
 
-	const int loop = rand() % 5 + 5;
+	const int loop = rand() % 5 + 5; // NOLINT(concurrency-mt-unsafe)
 	const size_t size = characters.size();
 
-	std::string encoded = serverURL;
+	std::string encoded = server_url;
 
 	for (int i = 0; i < loop; i++)
 	{
-		encoded += characters[rand() % size];
+		encoded += characters[rand() % size]; // NOLINT(concurrency-mt-unsafe)
 	}
 
-	dict[encoded] = longUrl;
+	dict[encoded] = long_url;
 
 	return encoded;
 }
 
-std::string Solutions::decode(std::string shortUrl)
+std::string solutions::decode(const std::string& short_url)
 {
-	return dict[shortUrl];
+	return dict[short_url];
 }
 
-std::vector<std::vector<int>> Solutions::groupThePeople(std::vector<int>& groupSizes)
+std::vector<std::vector<int>> solutions::group_the_people(const std::vector<int>& group_sizes)
 {
-	std::unordered_map<int, std::vector<int>> dict;
+	std::unordered_map<int, std::vector<int>> groups;
 
-	for (int i = 0; i < groupSizes.size(); i++)
+	for (size_t i = 0; i < group_sizes.size(); i++)
 	{
-		dict[groupSizes[i]].push_back(i);
+		groups[group_sizes[i]].push_back(static_cast<int>(i));
 	}
 
 	std::vector<std::vector<int>> result;
 
-	for (std::pair<const int, std::vector<int>> group : dict)
+	for (std::pair<const int, std::vector<int>> group : groups)
 	{
 		for (size_t i = 0; i < group.second.size(); i += group.first)
 		{
-			result.push_back({ group.second.begin() + i, group.second.begin() + i + group.first });
+			result.emplace_back(group.second.begin() + static_cast<int>(i),
+			                    group.second.begin() + static_cast<int>(i) + group.first);
 		}
 	}
 
 	return result;
 }
 
-std::string Solutions::restoreString(std::string s, std::vector<int>& indices)
+std::string solutions::restore_string(const std::string& s, const std::vector<int>& indices)
 {
 	const size_t size = s.size();
 	std::string restored(size, ' ');
@@ -605,13 +613,13 @@ std::string Solutions::restoreString(std::string s, std::vector<int>& indices)
 	return restored;
 }
 
-std::vector<std::string> Solutions::cellsInRange(std::string s)
+std::vector<std::string> solutions::cells_in_range(const std::string& s)
 {
 	std::vector<std::string> cells;
 
-	for (int i = s[0]; i <= s[3]; i++)
+	for (int i = static_cast<unsigned char>(s[0]); i <= s[3]; i++)
 	{
-		for (int j = s[1]; j <= s[4]; j++)
+		for (int j = static_cast<unsigned char>(s[1]); j <= s[4]; j++)
 		{
 			cells.push_back(static_cast<char>(i) + std::to_string(j - '0'));
 		}
@@ -620,8 +628,127 @@ std::vector<std::string> Solutions::cellsInRange(std::string s)
 	return cells;
 }
 
-int Solutions::averageOfSubtree(TreeNode* root)
+std::vector<double> solutions::convert_temperature(const double celsius)
 {
-	// TODO: I will solve later.
-	return 0;
+	double kelvin = celsius + 273.15;
+	double fahrenheit = celsius * 1.80 + 32.00;
+	return {kelvin, fahrenheit};
+}
+
+std::vector<int> solutions::find_array(const std::vector<int>& pref)
+{
+	const size_t size = pref.size();
+
+	std::vector<int> array;
+	array.reserve(size);
+	array.push_back(pref[0]);
+
+	for (size_t i = 1; i < size; i++)
+	{
+		array.push_back(pref[i - 1] ^ pref[i]);
+	}
+
+	return array;
+}
+
+int solutions::number_of_steps(int num)
+{
+	int steps = 0;
+	while (num > 0)
+	{
+		if (num % 2 == 0)
+		{
+			num /= 2;
+		}
+		else
+		{
+			num -= 1;
+		}
+
+		steps++;
+	}
+
+	return steps;
+}
+
+solutions::ordered_stream::ordered_stream(const int n)
+{
+	ptr = 0;
+	chunk = new std::vector<std::string>(n);
+}
+
+std::vector<std::string> solutions::ordered_stream::insert(const int id_key, const std::string& value)
+{
+	*(chunk->begin() + id_key - 1) = value;
+
+	const int temp = ptr;
+
+	if (ptr + 1 == id_key)
+	{
+		ptr += 1;
+
+		while (chunk->begin() + ptr != chunk->end() && !(chunk->begin() + ptr)->empty())
+		{
+			ptr += 1;
+		}
+	}
+
+	return {chunk->begin() + temp, chunk->begin() + ptr};
+}
+
+std::vector<int> solutions::min_operations(const std::string& boxes)
+{
+	const size_t size = boxes.size();
+	auto* res = new std::vector<int>(size);
+
+	int cost_left = 0;
+	int cost_right = 0;
+	int last_cost_left = 0;
+	int last_cost_right = 0;
+
+	for (size_t i = 0; i < size; i++)
+	{
+		res->at(i) += last_cost_left;
+		res->at(size - i - 1) += last_cost_right;
+
+		cost_left += boxes[i] - '0';
+		cost_right += boxes[size - i - 1] - '0';
+
+		last_cost_left += cost_left;
+		last_cost_right += cost_right;
+	}
+
+	return *res;
+}
+
+auto solutions::decode_message(const std::string& key, const std::string& message) -> std::string
+{
+	std::unordered_map<char, unsigned int> alphabet;
+
+	char decode = 'a';
+
+	for (const char& c : key)
+	{
+		if (std::isalpha(c) && alphabet.find(c) == alphabet.end())
+		{
+			alphabet[c] = static_cast<int>(decode);
+			decode++;
+		}
+	}
+
+	std::string str{};
+
+	for (const char& c : message)
+	{
+		if (std::isalpha(c))
+		{
+			str.push_back(static_cast<char>(alphabet[c]));
+		}
+		else
+		{
+			str.push_back(c);
+		}
+	}
+
+	return str;
 }
