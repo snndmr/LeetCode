@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <numeric>
 #include <iostream>
 
 class solutions
@@ -216,4 +217,8 @@ public:
 	/// <summary>No: 40</summary>
 	/// <see href="https://leetcode.com/problems/decode-the-message/">2325. Decode the Message</see>
 	static std::string decode_message(const std::string& key, const std::string& message);
+
+	/// <summary>No: 41</summary>
+	/// <see href="https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/">2391. Minimum Amount of Time to Collect Garbage</see>
+	static int garbage_collection(std::vector<std::string>& garbage, std::vector<int>& travel);
 };

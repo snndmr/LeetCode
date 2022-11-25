@@ -121,7 +121,7 @@ std::vector<int> solutions::shuffle(const std::vector<int>& nums, const int n)
 solutions::SubrectangleQueries::SubrectangleQueries(std::vector<std::vector<int>>& rectangle) : rectangle(rectangle) {}
 
 void solutions::SubrectangleQueries::update_subrectangle(const int row1, const int col1, const int row2, const int col2,
-                                                         const int new_value) const
+	const int new_value) const
 {
 	for (int i = row1; i <= row2; i++)
 	{
@@ -511,7 +511,7 @@ int solutions::max_increase_keeping_skyline(const std::vector<std::vector<int>>&
 
 std::vector<int> solutions::decode(const std::vector<int>& encoded, const int first)
 {
-	std::vector<int> decoded{first};
+	std::vector<int> decoded{ first };
 
 	for (const int& num : encoded)
 	{
@@ -593,7 +593,7 @@ std::vector<std::vector<int>> solutions::group_the_people(const std::vector<int>
 		for (size_t i = 0; i < group.second.size(); i += group.first)
 		{
 			result.emplace_back(group.second.begin() + static_cast<int>(i),
-			                    group.second.begin() + static_cast<int>(i) + group.first);
+				group.second.begin() + static_cast<int>(i) + group.first);
 		}
 	}
 
@@ -632,7 +632,7 @@ std::vector<double> solutions::convert_temperature(const double celsius)
 {
 	double kelvin = celsius + 273.15;
 	double fahrenheit = celsius * 1.80 + 32.00;
-	return {kelvin, fahrenheit};
+	return { kelvin, fahrenheit };
 }
 
 std::vector<int> solutions::find_array(const std::vector<int>& pref)
@@ -693,7 +693,7 @@ std::vector<std::string> solutions::ordered_stream::insert(const int id_key, con
 		}
 	}
 
-	return {chunk->begin() + temp, chunk->begin() + ptr};
+	return { chunk->begin() + temp, chunk->begin() + ptr };
 }
 
 std::vector<int> solutions::min_operations(const std::string& boxes)
@@ -751,4 +751,44 @@ auto solutions::decode_message(const std::string& key, const std::string& messag
 	}
 
 	return str;
+}
+
+int solutions::garbage_collection(std::vector<std::string>& garbage, std::vector<int>& travel)
+{
+	int metal_pick_cost = 0;
+	int paper_pick_cost = 0;
+	int glass_pick_cost = 0;
+
+	int metal_travel_cost = 0;
+	int paper_travel_cost = 0;
+	int glass_travel_cost = 0;
+	int total_travel_cost = 0;
+
+	for (size_t i = 0; i < garbage.size(); i++)
+	{
+		if (i > 0)
+		{
+			total_travel_cost += travel[i - 1];
+		}
+
+		for (const char& type : garbage[i]) {
+			if (type == 'M')
+			{
+				metal_pick_cost++;
+				metal_travel_cost = total_travel_cost;
+			}
+			else if (type == 'P')
+			{
+				paper_pick_cost++;
+				paper_travel_cost = total_travel_cost;
+			}
+			else if (type == 'G')
+			{
+				glass_pick_cost++;
+				glass_travel_cost = total_travel_cost;
+			}
+		}
+	}
+
+	return metal_pick_cost + metal_travel_cost + paper_pick_cost + paper_travel_cost + glass_pick_cost + glass_travel_cost;
 }
