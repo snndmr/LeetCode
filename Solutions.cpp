@@ -118,10 +118,11 @@ std::vector<int> solutions::shuffle(const std::vector<int>& nums, const int n)
 	return shuffled;
 }
 
-solutions::SubrectangleQueries::SubrectangleQueries(std::vector<std::vector<int>>& rectangle) : rectangle(rectangle) {}
+solutions::SubrectangleQueries::SubrectangleQueries(std::vector<std::vector<int>>& rectangle) : rectangle(rectangle)
+{}
 
 void solutions::SubrectangleQueries::update_subrectangle(const int row1, const int col1, const int row2, const int col2,
-	const int new_value) const
+														 const int new_value) const
 {
 	for (int i = row1; i <= row2; i++)
 	{
@@ -201,7 +202,7 @@ int solutions::num_identical_pairs(std::vector<int>& nums)
 
 int solutions::minimum_sum(int num)
 {
-	int nums[4]{};
+	int nums[4] {};
 
 	for (int& i : nums)
 	{
@@ -511,7 +512,7 @@ int solutions::max_increase_keeping_skyline(const std::vector<std::vector<int>>&
 
 std::vector<int> solutions::decode(const std::vector<int>& encoded, const int first)
 {
-	std::vector<int> decoded{ first };
+	std::vector<int> decoded { first };
 
 	for (const int& num : encoded)
 	{
@@ -593,7 +594,7 @@ std::vector<std::vector<int>> solutions::group_the_people(const std::vector<int>
 		for (size_t i = 0; i < group.second.size(); i += group.first)
 		{
 			result.emplace_back(group.second.begin() + static_cast<int>(i),
-				group.second.begin() + static_cast<int>(i) + group.first);
+								group.second.begin() + static_cast<int>(i) + group.first);
 		}
 	}
 
@@ -736,7 +737,7 @@ auto solutions::decode_message(const std::string& key, const std::string& messag
 		}
 	}
 
-	std::string str{};
+	std::string str {};
 
 	for (const char& c : message)
 	{
@@ -771,7 +772,8 @@ int solutions::garbage_collection(std::vector<std::string>& garbage, std::vector
 			total_travel_cost += travel[i - 1];
 		}
 
-		for (const char& type : garbage[i]) {
+		for (const char& type : garbage[i])
+		{
 			if (type == 'M')
 			{
 				metal_pick_cost++;
@@ -791,4 +793,128 @@ int solutions::garbage_collection(std::vector<std::string>& garbage, std::vector
 	}
 
 	return metal_pick_cost + metal_travel_cost + paper_pick_cost + paper_travel_cost + glass_pick_cost + glass_travel_cost;
+}
+
+int solutions::balanced_string_split(std::string s)
+{
+	int count = 0;
+	int balance = 0;
+
+	for (const char& c : s)
+	{
+		balance += c == 'L' ? 1 : -1;
+
+		if (balance == 0)
+		{
+			count++;
+		}
+	}
+
+	return count;
+}
+
+std::vector<int> solutions::pivot_array(std::vector<int>& nums, int pivot)
+{
+	const size_t size = nums.size();
+	std::vector<int> result(size, INT_MIN);
+
+	int beg = 0;
+	int end = size - 1;
+
+	for (size_t i = 0; i < nums.size(); i++)
+	{
+		if (nums[i] < pivot)
+		{
+			result[beg++] = nums[i];
+		}
+
+		if (nums[size - i - 1] > pivot)
+		{
+			result[end--] = nums[size - i - 1];
+		}
+	}
+
+	for (int& num : result)
+	{
+		if (num == INT_MIN)
+		{
+			num = pivot;
+		}
+	}
+
+	return result;
+}
+
+std::string solutions::sort_sentence(std::string s)
+{
+	std::map<unsigned int, std::string> sentence;
+	int beg = 0;
+	int count = 0;
+
+	for (size_t i = 0; i < s.size(); i++)
+	{
+		if (std::isdigit(s[i]))
+		{
+			sentence[s[i] - '0'] = s.substr(beg, count);
+			i += 2;
+			beg = i;
+			count = 0;
+		}
+
+		count++;
+	}
+
+	std::string result;
+
+	for (std::pair<unsigned int, std::string> word : sentence)
+	{
+		result += word.second + " ";
+	}
+
+	return result.substr(0, result.size() - 1);
+}
+
+int solutions::count_matches(std::vector<std::vector<std::string>>& items, std::string ruleKey, std::string ruleValue)
+{
+	int key = ruleKey == "type" ? 0 : (ruleKey == "color" ? 1 : 2);
+	int count = 0;
+
+	for (std::vector<std::string> item : items)
+	{
+		if (item[key] == ruleValue)
+		{
+			count++;
+		}
+	}
+
+	return count;
+}
+
+int solutions::xor_operation(int n, int start)
+{
+	int output = start;
+
+	for (int i = 1; i < n; i++)
+	{
+		start += 2;
+		output ^= start;
+	}
+
+	return output;
+}
+
+int solutions::max_width_of_vertical_area(std::vector<std::vector<int>>& points)
+{
+	std::sort(points.begin(), points.end());
+
+	int max_width = 0;
+
+	for (size_t i = 1; i < points.size(); i++) {
+		if (points[i][0] - points[i - 1][0] > max_width)
+		{
+			max_width = points[i][0] - points[i - 1][0];
+		}
+	}
+
+	return max_width;
 }

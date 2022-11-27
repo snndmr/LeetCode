@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <vector>
 #include <string>
 #include <numeric>
@@ -7,7 +8,7 @@
 
 class solutions
 {
-public:
+	public:
 	/// <summary>No: 1</summary>
 	/// <see href="https://leetcode.com/problems/concatenation-of-array/">1929. Concatenation of Array</see>
 	static std::vector<int> get_concatenation(const std::vector<int>& nums);
@@ -44,10 +45,10 @@ public:
 	/// <see href="https://leetcode.com/problems/subrectangle-queries/">1476. Subrectangle Queries</see>
 	class SubrectangleQueries
 	{
-	private:
+		private:
 		std::vector<std::vector<int>>& rectangle;
 
-	public:
+		public:
 		SubrectangleQueries(std::vector<std::vector<int>>& rectangle);
 
 		void update_subrectangle(int row1, int col1, int row2, int col2, int new_value) const;
@@ -75,10 +76,10 @@ public:
 	/// <see href="https://leetcode.com/problems/design-parking-system/">1603. Design Parking System</see>
 	class parking_system
 	{
-	private:
-		int slots[3]{};
+		private:
+		int slots[3] {};
 
-	public:
+		public:
 		parking_system(int big, int medium, int small);
 
 		bool add_car(int car_type);
@@ -201,11 +202,11 @@ public:
 	/// <see href="https://leetcode.com/problems/design-an-ordered-stream/">1656. Design an Ordered Stream</see>
 	class ordered_stream
 	{
-	private:
+		private:
 		int ptr;
 		std::vector<std::string>* chunk;
 
-	public:
+		public:
 		ordered_stream(int n);
 		std::vector<std::string> insert(int id_key, const std::string& value);
 	};
@@ -221,4 +222,28 @@ public:
 	/// <summary>No: 41</summary>
 	/// <see href="https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/">2391. Minimum Amount of Time to Collect Garbage</see>
 	static int garbage_collection(std::vector<std::string>& garbage, std::vector<int>& travel);
+
+	/// <summary>No: 42</summary>
+	/// <see href="https://leetcode.com/problems/split-a-string-in-balanced-strings/">1221. Split a String in Balanced Strings</see>
+	static int balanced_string_split(std::string s);
+
+	/// <summary>No: 43</summary>
+	/// <see href="https://leetcode.com/problems/partition-array-according-to-given-pivot/">2161. Partition Array According to Given Pivot</see>
+	static std::vector<int> pivot_array(std::vector<int>& nums, int pivot);
+
+	/// <summary>No: 44</summary>
+	/// <see href="https://leetcode.com/problems/sorting-the-sentence/">1859. Sorting the Sentence</see>
+	static std::string sort_sentence(std::string s);
+
+	/// <summary>No: 45</summary>
+	/// <see href="https://leetcode.com/problems/count-items-matching-a-rule/">1773. Count Items Matching a Rule</see>
+	static int count_matches(std::vector<std::vector<std::string>>& items, std::string ruleKey, std::string ruleValue);
+
+	/// <summary>No: 46</summary>
+	/// <see href="https://leetcode.com/problems/xor-operation-in-an-array/">1486. XOR Operation in an Array</see>
+	static int xor_operation(int n, int start);
+
+	/// <summary>No: 47</summary>
+	/// <see href="https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/">1637. Widest Vertical Area Between Two Points Containing No Points</see>
+	static int max_width_of_vertical_area(std::vector<std::vector<int>>& points);
 };
