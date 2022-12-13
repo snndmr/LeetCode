@@ -909,7 +909,8 @@ int solutions::max_width_of_vertical_area(std::vector<std::vector<int>>& points)
 
 	int max_width = 0;
 
-	for (size_t i = 1; i < points.size(); i++) {
+	for (size_t i = 1; i < points.size(); i++)
+	{
 		if (points[i][0] - points[i - 1][0] > max_width)
 		{
 			max_width = points[i][0] - points[i - 1][0];
@@ -917,4 +918,68 @@ int solutions::max_width_of_vertical_area(std::vector<std::vector<int>>& points)
 	}
 
 	return max_width;
+}
+
+std::vector<std::vector<int>> solutions::largest_local(std::vector<std::vector<int>>& grid)
+{
+	const size_t size = grid.size() - 2;
+	std::vector<std::vector<int>> result(size, std::vector<int>(size));
+
+	for (size_t i = 1; i <= size; i++)
+	{
+		for (size_t j = 1; j <= size; j++)
+		{
+			result[i - 1][j - 1] = std::max(
+				{ grid[i - 1][j - 1], grid[i - 1][j], grid[i - 1][j + 1],
+				grid[i][j - 1], grid[i][j], grid[i][j + 1],
+				grid[i + 1][j - 1], grid[i + 1][j], grid[i + 1][j + 1] });
+		}
+	}
+
+	return result;
+}
+
+bool solutions::check_if_pangram(std::string sentence)
+{
+	unsigned result = 0;
+	const unsigned expected = 67108863; // (00000011111111111111111111111111) = 67108863
+
+	for (char& c : sentence) {
+		result |= static_cast<int>(pow(2, c - 'a'));
+	}
+
+	return result == expected;
+}
+
+int solutions::arithmetic_triplets(std::vector<int>& nums, int diff)
+{
+	int count = 0;
+	const int size = nums.size();
+
+	for (size_t i = 0; i < size - 2; i++)
+	{
+		for (size_t j = i + 1; j < size; j++)
+		{
+			if (nums[j] - nums[i] > diff) {
+				break;
+			}
+
+			if (nums[j] - nums[i] == diff)
+			{
+				for (size_t k = j; k < size; k++)
+				{
+					if (nums[k] - nums[j] > diff)
+					{
+						break;
+					}
+
+					if (nums[k] - nums[j] == diff)
+					{
+						count++;
+					}
+				}
+			}
+		}
+	}
+	return count;
 }

@@ -246,4 +246,16 @@ class solutions
 	/// <summary>No: 47</summary>
 	/// <see href="https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/">1637. Widest Vertical Area Between Two Points Containing No Points</see>
 	static int max_width_of_vertical_area(std::vector<std::vector<int>>& points);
+
+	/// <summary>No: 48</summary>
+	/// <see href="https://leetcode.com/problems/largest-local-values-in-a-matrix/">2373. Largest Local Values in a Matrix</see>
+	static std::vector<std::vector<int>> largest_local(std::vector<std::vector<int>>& grid);
+
+	/// <summary>No: 49</summary>
+	/// <see href="https://leetcode.com/problems/check-if-the-sentence-is-pangram/">1832. Check if the Sentence Is Pangram</see>
+	static bool check_if_pangram(std::string sentence);
+
+	/// <summary>No: 50</summary>
+	/// <see href="https://leetcode.com/problems/number-of-arithmetic-triplets/">2367. Number of Arithmetic Triplets</see>
+	static int arithmetic_triplets(std::vector<int>& nums, int diff);
 };
