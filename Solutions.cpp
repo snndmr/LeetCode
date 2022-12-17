@@ -128,3 +128,73 @@ int Solutions::maxDepth(std::string s) {
 
 	return maxDepth;
 }
+
+int Solutions::getDecimalValue(ListNode* head) {
+	std::string binNum;
+
+	while (head != nullptr) {
+		binNum += head->val;
+		head = head->next;
+	}
+
+	int base = 1;
+	int result = 0;
+
+	for (int i = binNum.size() - 1; i >= 0; i--) {
+		result += binNum[i] * base;
+		base *= 2;
+	}
+
+	return result;
+}
+
+int Solutions::countKDifference(std::vector<int>& nums, int k) {
+	int countKDifference = 0;
+
+	// Brute Force - Time Complexity: O(n^2)
+	/*
+	const size_t size = nums.size();
+
+	for (size_t i = 0; i < size - 1; i++) {
+		for (size_t j = i + 1; j < size; j++) {
+			if (abs(nums[i] - nums[j]) == k) {
+				countKDifference++;
+			}
+		}
+	}
+	*/
+
+	int map[101] = {};
+
+	for (int& num : nums) {
+		map[num]++;
+	}
+
+	for (int i = k + 1; i < 101; i++) {
+		countKDifference += map[i] * map[i - k];
+	}
+
+	return countKDifference;
+}
+
+std::string Solutions::truncateSentence(std::string s, int k) {
+	int lastPos = 0;
+	int spaceCount = 0;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (isspace(s[i])) {
+			spaceCount++;
+		}
+
+		if (spaceCount == k) {
+			lastPos = i;
+			break;
+		}
+
+		if (i == s.size() - 1) {
+			return s;
+		}
+	}
+
+	return s.substr(0, lastPos);
+}

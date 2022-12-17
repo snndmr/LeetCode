@@ -34,5 +34,24 @@ class Solutions {
 	/// <summary>No: 57</summary>
 	/// <see href="https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/">1614. Maximum Nesting Depth of the Parentheses</see>
 	static int maxDepth(std::string s);
-};
 
+	/// <summary>No: 58</summary>
+	/// <see href="https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/">1290. Convert Binary Number in a Linked List to Integer</see>
+	struct ListNode {
+		int val;
+		ListNode* next;
+		ListNode() : val(0), next(nullptr) {}
+		ListNode(int x) : val(x), next(nullptr) {}
+		ListNode(int x, ListNode* next) : val(x), next(next) {}
+	};
+
+	static int getDecimalValue(ListNode* head);
+
+	/// <summary>No: 59</summary>
+	/// <see href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/">2006. Count Number of Pairs With Absolute Difference K</see>
+	static int countKDifference(std::vector<int>& nums, int k);
+
+	/// <summary>No: 60</summary>
+	/// <see href="https://leetcode.com/problems/truncate-sentence/">1816. Truncate Sentence</see>
+	static std::string truncateSentence(std::string s, int k);
+};
