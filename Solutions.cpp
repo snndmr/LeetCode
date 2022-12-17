@@ -32,3 +32,54 @@ int Solutions::sumOddLengthSubarrays(std::vector<int>& arr)
 
 	return result;
 }
+
+int Solutions::deleteGreatestValue(std::vector<std::vector<int>>& grid)
+{
+	const size_t gridSize = grid.size();
+	const size_t rowSize = grid.at(0).size();
+
+	for (size_t i = 0; i < gridSize; i++)
+	{
+		std::sort(grid[i].begin(), grid[i].end());
+	}
+
+	int result = 0;
+
+	for (size_t i = 0; i < rowSize; i++)
+	{
+		int max = 0;
+
+		for (size_t j = 0; j < gridSize; j++)
+		{
+			if (grid[j][i] > max)
+			{
+				max = grid[j][i];
+			}
+		}
+
+		result += max;
+	}
+
+	return result;
+}
+
+bool Solutions::arrayStringsAreEqual(std::vector<std::string>& word1, std::vector<std::string>& word2)
+{
+	std::string concanated1;
+	std::string concanated2;
+
+	for (std::string& piece : word1) {
+		concanated1 += piece;
+	}
+
+	for (std::string& piece : word2) {
+		concanated2 += piece;
+	}
+
+	if (concanated1.size() != concanated2.size())
+	{
+		return false;
+	}
+
+	return concanated1 == concanated2;
+}
