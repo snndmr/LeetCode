@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <vector>
 #include <string>
 #include <bitset>
@@ -75,4 +76,12 @@ class Solutions {
 	/// <summary>No: 65</summary>
 	/// <see href="https://leetcode.com/problems/count-the-number-of-consistent-strings/">1684. Count the Number of Consistent Strings</see>
 	static int countConsistentStrings(std::string allowed, std::vector<std::string>& words);
+
+	/// <summary>No: 66</summary>
+	/// <see href="https://leetcode.com/problems/sort-the-people/">2418. Sort the People</see>
+	static std::vector<std::string> sortPeople(std::vector<std::string>& names, std::vector<int>& heights);
+
+	/// <summary>No: 67</summary>
+	/// <see href="https://leetcode.com/problems/reverse-words-in-a-string-iii/">557. Reverse Words in a String III</see>
+	static std::string reverseWords(std::string s);
 };

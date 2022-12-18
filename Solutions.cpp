@@ -279,3 +279,34 @@ int Solutions::countConsistentStrings(std::string allowed, std::vector<std::stri
 
 	return count;
 }
+
+std::vector<std::string> Solutions::sortPeople(std::vector<std::string>& names, std::vector<int>& heights) {
+	std::map<int, std::string, std::greater<int>> people;
+
+	for (size_t i = 0; i < names.size(); i++) {
+		people[heights[i]] = names[i];
+	}
+
+	std::vector<std::string> result;
+
+	for (std::pair<int, std::string> person : people) {
+		result.push_back(person.second);
+	}
+
+	return result;
+}
+
+std::string Solutions::reverseWords(std::string s) {
+	int begin = 0;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (isspace(s[i])) {
+			std::reverse(s.begin() + begin, s.begin() + i);
+			begin = i + 1;
+		} else if (i == s.size() - 1) {
+			std::reverse(s.begin() + begin, s.begin() + i + 1);
+		}
+	}
+
+	return s;
+}
