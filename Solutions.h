@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <bitset>
 #include <algorithm>
 #include <unordered_set>
 
@@ -54,4 +55,24 @@ class Solutions {
 	/// <summary>No: 60</summary>
 	/// <see href="https://leetcode.com/problems/truncate-sentence/">1816. Truncate Sentence</see>
 	static std::string truncateSentence(std::string s, int k);
+
+	/// <summary>No: 61</summary>
+	/// <see href="https://leetcode.com/problems/count-asterisks/description/">2315. Count Asterisks</see>
+	static int countAsterisks(std::string s);
+
+	/// <summary>No: 62</summary>
+	/// <see href="https://leetcode.com/problems/minimum-bit-flips-to-convert-number/">2220. Minimum Bit Flips to Convert Number</see>
+	static int minBitFlips(int start, int goal);
+
+	/// <summary>No: 63</summary>
+	/// <see href="https://leetcode.com/problems/maximum-69-number/">1323. Maximum 69 Number</see>
+	static int maximum69Number(int num);
+
+	/// <summary>No: 64</summary>
+	/// <see href="https://leetcode.com/problems/to-lower-case/">709. To Lower Case</see>
+	static std::string toLowerCase(std::string s);
+
+	/// <summary>No: 65</summary>
+	/// <see href="https://leetcode.com/problems/count-the-number-of-consistent-strings/">1684. Count the Number of Consistent Strings</see>
+	static int countConsistentStrings(std::string allowed, std::vector<std::string>& words);
 };

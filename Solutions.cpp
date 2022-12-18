@@ -198,3 +198,84 @@ std::string Solutions::truncateSentence(std::string s, int k) {
 
 	return s.substr(0, lastPos);
 }
+
+int Solutions::countAsterisks(std::string s) {
+	int pair = 0;
+	int asteriskCount = 0;
+
+	for (char& c : s) {
+		if (c == '|') {
+			pair++;
+		} else if (pair % 2 == 0 && c == '*') {
+			asteriskCount++;
+		}
+	}
+
+	return asteriskCount;
+}
+
+int Solutions::minBitFlips(int start, int goal) {
+	std::string startBinary = std::bitset<32>(start).to_string();
+	std::string goalBinary = std::bitset<32>(goal).to_string();
+
+	int countDifference = 0;
+
+	for (size_t i = 0; i < startBinary.size(); i++) {
+		if (startBinary[i] != goalBinary[i]) {
+			countDifference++;
+		}
+	}
+
+	return countDifference;
+}
+
+int Solutions::maximum69Number(int num) {
+	std::string str = std::to_string(num);
+
+	for (size_t i = 0; i < str.size(); i++) {
+		if (str[i] == '6') {
+			str[i] = '9';
+			break;
+		}
+	}
+
+	return stoi(str);
+}
+
+std::string Solutions::toLowerCase(std::string s) {
+	for (size_t i = 0; i < s.size(); i++) {
+		if (isupper(s[i])) {
+			s[i] = tolower(s[i]);
+		}
+	}
+
+	return s;
+}
+
+int Solutions::countConsistentStrings(std::string allowed, std::vector<std::string>& words) {
+	bool map[26] = { false };
+
+	for (size_t i = 0; i < allowed.size(); i++) {
+		map[allowed[i] - 'a'] = true;
+	}
+
+	int count = 0;
+	bool isInconsistent;
+
+	for (std::string& word : words) {
+		isInconsistent = false;
+
+		for (char& letter : word) {
+			if (!map[letter - 'a']) {
+				isInconsistent = true;
+				break;
+			}
+		}
+
+		if (!isInconsistent) {
+			count++;
+		}
+	}
+
+	return count;
+}
