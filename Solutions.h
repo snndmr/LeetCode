@@ -84,4 +84,12 @@ class Solutions {
 	/// <summary>No: 67</summary>
 	/// <see href="https://leetcode.com/problems/reverse-words-in-a-string-iii/">557. Reverse Words in a String III</see>
 	static std::string reverseWords(std::string s);
+
+	/// <summary>No: 68</summary>
+	/// <see href="https://leetcode.com/problems/rings-and-rods/">2103. Rings and Rods</see>
+	static int countPoints(std::string rings);
+
+	/// <summary>No: 69</summary>
+	/// <see href="https://leetcode.com/problems/maximum-product-difference-between-two-pairs/">1913. Maximum Product Difference Between Two Pairs</see>
+	static int maxProductDifference(std::vector<int>& nums);
 };

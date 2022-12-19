@@ -310,3 +310,58 @@ std::string Solutions::reverseWords(std::string s) {
 
 	return s;
 }
+
+int Solutions::countPoints(std::string rings) {
+	bool rods[10][3] = { {false} };
+
+	for (size_t i = 0; i < rings.size(); i += 2) {
+		int rodIndex = rings[i + 1] - '0';
+
+		switch (rings[i]) {
+			case 'R':
+				rods[rodIndex][0] = true;
+				break;
+			case 'G':
+				rods[rodIndex][1] = true;
+				break;
+			case 'B':
+				rods[rodIndex][2] = true;
+				break;
+		}
+	}
+
+	int count = 0;
+
+	for (size_t i = 0; i < 10; i++) {
+		if (rods[i][0] && rods[i][1] && rods[i][2]) {
+			count++;
+		}
+	}
+
+	return count;
+}
+
+int Solutions::maxProductDifference(std::vector<int>& nums) {
+	int biggest = INT_MIN;
+	int nextBiggest = INT_MIN;
+	int smallest = INT_MAX;
+	int nextSmallest = INT_MAX;
+
+	for (size_t i = 0; i < nums.size(); i++) {
+		if (nums[i] > biggest) {
+			nextBiggest = biggest;
+			biggest = nums[i];
+		} else if (nums[i] > nextBiggest) {
+			nextBiggest = nums[i];
+		}
+
+		if (nums[i] < smallest) {
+			nextSmallest = smallest;
+			smallest = nums[i];
+		} else if (nums[i] < nextSmallest) {
+			nextSmallest = nums[i];
+		}
+	}
+
+	return (biggest * nextBiggest) - (smallest * nextSmallest);
+}
