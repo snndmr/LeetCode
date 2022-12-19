@@ -365,3 +365,20 @@ int Solutions::maxProductDifference(std::vector<int>& nums) {
 
 	return (biggest * nextBiggest) - (smallest * nextSmallest);
 }
+
+int Solutions::countGoodTriplets(std::vector<int>& arr, int a, int b, int c) {
+	int count = 0;
+
+	const size_t size = arr.size();
+	for (size_t i = 0; i < size - 2; i++) {
+		for (size_t j = i + 1; j < size - 1; j++) {
+			for (size_t k = j + 1; k < size; k++) {
+				if (abs(arr[i] - arr[j]) <= a && abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c) {
+					count++;
+				}
+			}
+		}
+	}
+
+	return count;
+}

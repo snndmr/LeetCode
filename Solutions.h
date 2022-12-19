@@ -92,4 +92,8 @@ class Solutions {
 	/// <summary>No: 69</summary>
 	/// <see href="https://leetcode.com/problems/maximum-product-difference-between-two-pairs/">1913. Maximum Product Difference Between Two Pairs</see>
 	static int maxProductDifference(std::vector<int>& nums);
+
+	/// <summary>No: 70</summary>
+	/// <see href="https://leetcode.com/problems/count-good-triplets/">1534. Count Good Triplets</see>
+	static int countGoodTriplets(std::vector<int>& arr, int a, int b, int c);
 };
