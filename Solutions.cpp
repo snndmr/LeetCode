@@ -426,3 +426,38 @@ int Solutions::minMovesToSeat(std::vector<int>& seats, std::vector<int>& student
 
 	return sum;
 }
+
+std::string Solutions::removeOuterParentheses(std::string s) {
+	std::string result;
+
+	int loc = 0;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (loc == 0 && s[i] == '(') {
+			loc++;
+			continue;
+		} else if (s[i] == '(') {
+			loc++;
+		} else if (s[i] == ')') {
+			loc--;
+		}
+
+		if (loc > 0) {
+			result += s[i];
+		}
+	}
+
+	return result;
+}
+
+int Solutions::commonFactors(int a, int b) {
+	int count = 1;
+
+	for (size_t i = 2; i <= std::min(a, b); i++) {
+		if (a % i == 0 && b % i == 0) {
+			count++;
+		}
+	}
+
+	return count;
+}

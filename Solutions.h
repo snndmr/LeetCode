@@ -108,4 +108,12 @@ class Solutions {
 	/// <summary>No: 73</summary>
 	/// <see href="https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/">2037. Minimum Number of Moves to Seat Everyone</see>
 	static int minMovesToSeat(std::vector<int>& seats, std::vector<int>& students);
+
+	/// <summary>No: 74</summary>
+	/// <see href="https://leetcode.com/problems/remove-outermost-parentheses/">1021. Remove Outermost Parentheses</see>
+	static std::string removeOuterParentheses(std::string s);
+
+	/// <summary>No: 75</summary>
+	/// <see href="https://leetcode.com/problems/number-of-common-factors/">2427. Number of Common Factors</see>
+	static int commonFactors(int a, int b);
 };
