@@ -453,7 +453,7 @@ std::string Solutions::removeOuterParentheses(std::string s) {
 int Solutions::commonFactors(int a, int b) {
 	int count = 1;
 
-	for (size_t i = 2; i <= std::min(a, b); i++) {
+	for (int i = 2; i <= std::min(a, b); i++) {
 		if (a % i == 0 && b % i == 0) {
 			count++;
 		}
@@ -473,4 +473,27 @@ int Solutions::numOfStrings(std::vector<std::string>& patterns, std::string word
 		}
 	}
 	return counter;
+}
+
+int Solutions::diagonalSum(std::vector<std::vector<int>>& mat) {
+	const size_t size = mat.size();
+
+	int sum = 0;
+
+	for (size_t i = 0; i < size / 2; i++) {
+		sum += mat[i][i] + mat[size - i - 1][size - i - 1] + mat[size - i - 1][i] + mat[i][size - i - 1];
+	}
+
+	if (size % 2 != 0) {
+		sum += mat[size / 2][size / 2];
+	}
+
+	return sum;
+}
+
+std::string Solutions::replaceDigits(std::string s) {
+	for (size_t i = 1; i < s.size(); i += 2) {
+		s[i] = static_cast<char>(s[i - 1] + (s[i] - '0'));
+	}
+	return s;
 }

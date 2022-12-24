@@ -121,4 +121,12 @@ class Solutions {
 	/// <summary>No: 76</summary>
 	/// <see href="https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/">1967. Number of Strings That Appear as Substrings in Word</see>
 	static int numOfStrings(std::vector<std::string>& patterns, std::string word);
+
+	/// <summary>No: 77</summary>
+	/// <see href="https://leetcode.com/problems/matrix-diagonal-sum/">1572. Matrix Diagonal Sum</see>
+	static int diagonalSum(std::vector<std::vector<int>>& mat);
+
+	/// <summary>No: 78</summary>
+	/// <see href="https://leetcode.com/problems/replace-all-digits-with-characters/">1844. Replace All Digits with Characters</see>
+	static std::string replaceDigits(std::string s);
 };
