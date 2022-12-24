@@ -382,3 +382,47 @@ int Solutions::countGoodTriplets(std::vector<int>& arr, int a, int b, int c) {
 
 	return count;
 }
+
+std::vector<std::vector<int>> Solutions::flipAndInvertImage(std::vector<std::vector<int>>& image) {
+	const size_t size = image.size();
+	const size_t rowSize = image.at(0).size();
+
+	for (size_t i = 0; i < size; i++) {
+		for (size_t j = 0; j < rowSize / 2; j++) {
+			int temp = image[i][j];
+			image[i][j] = image[i][rowSize - j - 1];
+			image[i][rowSize - j - 1] = temp;
+
+			image[i][j] = image[i][j] == 0 ? 1 : 0;
+			image[i][rowSize - j - 1] = image[i][rowSize - j - 1] == 0 ? 1 : 0;
+		}
+	}
+
+	return image;
+}
+
+int Solutions::countPairs(std::vector<int>& nums, int k) {
+	int count = 0;
+
+	for (size_t i = 0; i < nums.size() - 1; i++) {
+		for (size_t j = i + 1; j < nums.size(); j++) {
+			if (nums[i] == nums[j] && (i * j) % k == 0) {
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+int Solutions::minMovesToSeat(std::vector<int>& seats, std::vector<int>& students) {
+	std::sort(seats.begin(), seats.end());
+	std::sort(students.begin(), students.end());
+
+	int sum = 0;
+
+	for (size_t i = 0; i < seats.size(); i++) {
+		sum += abs(students[i] - seats[i]);
+	}
+
+	return sum;
+}

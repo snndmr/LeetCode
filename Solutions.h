@@ -96,4 +96,16 @@ class Solutions {
 	/// <summary>No: 70</summary>
 	/// <see href="https://leetcode.com/problems/count-good-triplets/">1534. Count Good Triplets</see>
 	static int countGoodTriplets(std::vector<int>& arr, int a, int b, int c);
+
+	/// <summary>No: 71</summary>
+	/// <see href="https://leetcode.com/problems/flipping-an-image/">832. Flipping an Image</see>
+	static std::vector<std::vector<int>> flipAndInvertImage(std::vector<std::vector<int>>& image);
+
+	/// <summary>No: 72</summary>
+	/// <see href="https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array/">2176. Count Equal and Divisible Pairs in an Array</see>
+	static int countPairs(std::vector<int>& nums, int k);
+
+	/// <summary>No: 73</summary>
+	/// <see href="https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/">2037. Minimum Number of Moves to Seat Everyone</see>
+	static int minMovesToSeat(std::vector<int>& seats, std::vector<int>& students);
 };
