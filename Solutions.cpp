@@ -497,3 +497,33 @@ std::string Solutions::replaceDigits(std::string s) {
 	}
 	return s;
 }
+
+int Solutions::pivotInteger(int n) {
+	int sum = 0;
+	int sumUpToN = (n * (n + 1)) / 2;
+
+	for (int i = n; i >= n / 2; i--) {
+		sum += i;
+		if (sum == sumUpToN) {
+			return i;
+		}
+		sumUpToN -= i;
+	}
+
+	return -1;
+}
+
+std::string Solutions::freqAlphabets(std::string s) {
+	std::string decrypted;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (i + 2 < s.size() && s[i + 2] == '#') {
+			decrypted += 'a' + stoi(s.substr(i, 2));
+			i += 2;
+		} else {
+			decrypted += 'a' + s[i] - '0';
+		}
+	}
+
+	return decrypted;
+}

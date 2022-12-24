@@ -129,4 +129,12 @@ class Solutions {
 	/// <summary>No: 78</summary>
 	/// <see href="https://leetcode.com/problems/replace-all-digits-with-characters/">1844. Replace All Digits with Characters</see>
 	static std::string replaceDigits(std::string s);
+
+	/// <summary>No: 79</summary>
+	/// <see href="https://leetcode.com/problems/find-the-pivot-integer/">2485. Find the Pivot Integer</see>
+	static int pivotInteger(int n);
+
+	/// <summary>No: 80</summary>
+	/// <see href="https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/">1309. Decrypt String from Alphabet to Integer Mapping</see>
+	static std::string freqAlphabets(std::string s);
 };
