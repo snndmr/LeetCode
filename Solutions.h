@@ -6,6 +6,7 @@
 #include <bitset>
 #include <algorithm>
 #include <unordered_set>
+#include <unordered_map>
 
 class Solutions {
 	public:
@@ -116,4 +117,8 @@ class Solutions {
 	/// <summary>No: 75</summary>
 	/// <see href="https://leetcode.com/problems/number-of-common-factors/">2427. Number of Common Factors</see>
 	static int commonFactors(int a, int b);
+
+	/// <summary>No: 76</summary>
+	/// <see href="https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/">1967. Number of Strings That Appear as Substrings in Word</see>
+	static int numOfStrings(std::vector<std::string>& patterns, std::string word);
 };

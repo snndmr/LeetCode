@@ -461,3 +461,16 @@ int Solutions::commonFactors(int a, int b) {
 
 	return count;
 }
+
+int Solutions::numOfStrings(std::vector<std::string>& patterns, std::string word) {
+	int counter = 0;
+	for (const std::string& str : patterns) {
+		for (size_t i = 0; i < word.size(); ++i) {
+			if (word[i] == str[0] && word.substr(i, str.size()) == str) {
+				counter += 1;
+				break;
+			}
+		}
+	}
+	return counter;
+}
