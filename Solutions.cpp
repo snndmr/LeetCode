@@ -518,12 +518,16 @@ std::string Solutions::freqAlphabets(std::string s) {
 
 	for (size_t i = 0; i < s.size(); i++) {
 		if (i + 2 < s.size() && s[i + 2] == '#') {
-			decrypted += 'a' + stoi(s.substr(i, 2));
+			decrypted += 'a' + stoi(s.substr(i, 2)) - 1;
 			i += 2;
 		} else {
-			decrypted += 'a' + s[i] - '0';
+			decrypted += 'a' + s[i] - '0' - 1;
 		}
 	}
 
 	return decrypted;
+}
+
+std::vector<int> Solutions::twoSum(std::vector<int>& nums, int target) {
+	return std::vector<int>();
 }
