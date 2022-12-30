@@ -528,6 +528,3 @@ std::string Solutions::freqAlphabets(std::string s) {
 	return decrypted;
 }
 
-std::vector<int> Solutions::twoSum(std::vector<int>& nums, int target) {
-	return std::vector<int>();
-}
