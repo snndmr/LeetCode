@@ -137,4 +137,16 @@ class Solutions {
 	/// <summary>No: 80</summary>
 	/// <see href="https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/">1309. Decrypt String from Alphabet to Integer Mapping</see>
 	static std::string freqAlphabets(std::string s);
+
+	/// <summary>No: 81</summary>
+	/// <see href="https://leetcode.com/problems/two-sum/">1. Two Sum</see>
+	static std::vector<int> twoSum(std::vector<int>& nums, int target);
+
+	/// <summary>No: 82</summary>
+	/// <see href="https://leetcode.com/problems/palindrome-number/">9. Palindrome Number</see>
+	static bool isPalindrome(int x);
+
+	/// <summary>No: 83</summary>
+	/// <see href="https://leetcode.com/problems/roman-to-integer/">13. Roman to Integer</see>
+	static int romanToInt(std::string s);
 };

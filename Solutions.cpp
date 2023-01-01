@@ -528,3 +528,55 @@ std::string Solutions::freqAlphabets(std::string s) {
 	return decrypted;
 }
 
+std::vector<int> Solutions::twoSum(std::vector<int>& nums, int target) {
+	std::unordered_map<int, int> locations;
+
+	for (size_t i = 0; i < nums.size(); i++) {
+		locations[nums[i]] = i + 1;
+	}
+
+	for (size_t i = 0; i < nums.size(); i++) {
+		int indexValue = locations[target - nums[i]];
+
+		if (indexValue > 0 && indexValue - 1 != i) {
+			return { static_cast<int>(i), indexValue - 1 };
+		}
+	}
+
+	return { -1, -1 };
+}
+
+bool Solutions::isPalindrome(int x) {
+	int temp = x;
+	long long reverse = 0;
+
+	while (temp > 0) {
+		reverse = reverse * 10 + temp % 10;
+		temp /= 10;
+	}
+
+	return x == reverse;
+}
+
+int Solutions::romanToInt(std::string s) {
+	std::unordered_map<char, int> romans = {
+		{'I', 1}, {'V', 5},  {'X', 10},  {'L', 50},
+		{'C', 100},  {'D', 500},  {'M', 1000}
+	};
+
+	int result = 0;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (i != s.size() - 1
+			&& (s[i] == 'I' && (s[i + 1] == 'V' || s[i + 1] == 'X')
+			|| s[i] == 'X' && (s[i + 1] == 'L' || s[i + 1] == 'C')
+			|| s[i] == 'C' && (s[i + 1] == 'D' || s[i + 1] == 'M'))) {
+			result += romans[s[i + 1]] - romans[s[i]];
+			i += 1;
+		} else {
+			result += romans[s[i]];
+		}
+	}
+
+	return result;
+}
