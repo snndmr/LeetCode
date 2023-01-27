@@ -1,9 +1,11 @@
 #pragma once
 
 #include <map>
+#include <stack>
 #include <vector>
 #include <string>
 #include <bitset>
+#include <numeric>
 #include <algorithm>
 #include <unordered_set>
 #include <unordered_map>
@@ -149,4 +151,24 @@ class Solutions {
 	/// <summary>No: 83</summary>
 	/// <see href="https://leetcode.com/problems/roman-to-integer/">13. Roman to Integer</see>
 	static int romanToInt(std::string s);
+
+	/// <summary>No: 84</summary>
+	/// <see href="https://leetcode.com/problems/find-pivot-index/">724. Find Pivot Index</see>
+	static int pivotIndex(std::vector<int>& nums);
+
+	/// <summary>No: 85</summary>
+	/// <see href="https://leetcode.com/problems/isomorphic-strings/">205. Isomorphic Strings</see>
+	static bool isIsomorphic(std::string s, std::string t);
+
+	/// <summary>No: 86</summary>
+	/// <see href="https://leetcode.com/problems/is-subsequence/">392. Is Subsequence</see>
+	static bool isSubsequence(std::string s, std::string t);
+
+	/// <summary>No: 87</summary>
+	/// <see href="https://leetcode.com/problems/merge-two-sorted-lists/">21. Merge Two Sorted Lists</see>
+	static ListNode* mergeTwoLists(ListNode* list1, ListNode* list2);
+
+	/// <summary>No: 88</summary>
+	/// <see href="https://leetcode.com/problems/reverse-linked-list/">206. Reverse Linked List</see>
+	static ListNode* reverseList(ListNode* head);
 };

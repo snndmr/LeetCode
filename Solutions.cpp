@@ -580,3 +580,106 @@ int Solutions::romanToInt(std::string s) {
 
 	return result;
 }
+
+int Solutions::pivotIndex(std::vector<int>& nums) {
+	int sum = std::accumulate(nums.begin(), nums.end(), 0);
+	int partialSum = 0;
+
+	for (size_t i = 0; i < nums.size(); i++) {
+		if (sum - nums[i] == 2 * partialSum) {
+			return i;
+		}
+		partialSum += nums[i];
+	}
+
+	return -1;
+}
+
+bool Solutions::isIsomorphic(std::string s, std::string t) {
+	std::vector<bool> lookUp(127);
+	std::unordered_map<char, char> dict;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		if (dict.find(s[i]) == dict.end()) {
+			if (lookUp[t[i]]) {
+				return false;
+			}
+
+			dict[s[i]] = t[i];
+			lookUp[t[i]] = true;
+		} else if (dict[s[i]] != t[i]) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool Solutions::isSubsequence(std::string s, std::string t) {
+	int lastPos = 0;
+
+	for (size_t i = 0; i < s.size(); i++) {
+		t = t.substr(lastPos, t.size() - lastPos);
+		lastPos = t.find(s[i]);
+
+		if (lastPos == std::string::npos) {
+			return false;
+		}
+
+		if (t[lastPos] == s[i]) {
+			lastPos++;
+		}
+	}
+
+	return true;
+}
+
+Solutions::ListNode* Solutions::mergeTwoLists(ListNode* list1, ListNode* list2) {
+	if (list1 == nullptr) return list2;
+	if (list2 == nullptr) return list1;
+
+	ListNode* it = list1;
+
+	while (it != nullptr) {
+		if (list2 == nullptr) return list1;
+
+		if (it->val > list2->val) {
+			it->next = new ListNode(it->val, it->next);
+			it->val = list2->val;
+			list2 = list2->next;
+		}
+
+		if (it->next == nullptr) break;
+
+		it = it->next;
+	}
+
+	if (list2 != nullptr) it->next = list2;
+
+	return list1;
+}
+
+Solutions::ListNode* Solutions::reverseList(ListNode* head) {
+	if (head == nullptr) return head;
+
+	ListNode* iter = head;
+	std::stack<ListNode*> previousNodes;
+
+	while (iter->next != nullptr) {
+		previousNodes.push(iter);
+		iter = iter->next;
+	}
+
+	head = iter;
+
+	while (!previousNodes.empty()) {
+		iter->next = previousNodes.top();
+		iter = iter->next;
+
+		previousNodes.pop();
+
+		if (previousNodes.empty())  iter->next = nullptr;
+	}
+
+	return head;
+}
