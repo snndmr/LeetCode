@@ -683,3 +683,38 @@ Solutions::ListNode* Solutions::reverseList(ListNode* head) {
 
 	return head;
 }
+
+int Solutions::search(std::vector<int>& nums, int target) {
+	int mid = 0;
+	int left = 0;
+	int right = nums.size() - 1;
+
+	while (left <= right) {
+		mid = (left + right) / 2;
+
+		if (nums[mid] == target) return mid;
+		else if (nums[mid] < target) left = mid + 1;
+		else right = mid - 1;
+	}
+
+	return -1;
+}
+
+int Solutions::countOdds(int low, int high) {
+	return (high - low) / 2 + (low % 2 != 0 || high % 2 != 0) ? 1 : 0;
+}
+
+double Solutions::average(std::vector<int>& salary) {
+	double sum = 0.0;
+	unsigned max = 0;
+	unsigned min = UINT_MAX;
+
+	for (std::vector<int>::iterator it = salary.begin(); it != salary.end(); it++) {
+		if (min > *it) min = *it;
+		if (max < *it) max = *it;
+		
+		sum += *it;
+	}
+
+	return (sum - max - min) / (salary.size() - 2);
+}

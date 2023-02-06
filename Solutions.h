@@ -171,4 +171,16 @@ class Solutions {
 	/// <summary>No: 88</summary>
 	/// <see href="https://leetcode.com/problems/reverse-linked-list/">206. Reverse Linked List</see>
 	static ListNode* reverseList(ListNode* head);
+
+	/// <summary>No: 89</summary>
+	/// <see href="https://leetcode.com/problems/binary-search/">704. Binary Search</see>
+	static int search(std::vector<int>& nums, int target);
+
+	/// <summary>No: 90</summary>
+	/// <see href="https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/">1523. Count Odd Numbers in an Interval Range</see>
+	static int countOdds(int low, int high);
+
+	/// <summary>No: 91</summary>
+	/// <see href="https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/">1491. Average Salary Excluding the Minimum and Maximum Salary/see>
+	static double average(std::vector<int>& salary);
 };
