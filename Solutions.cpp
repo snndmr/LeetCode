@@ -712,9 +712,34 @@ double Solutions::average(std::vector<int>& salary) {
 	for (std::vector<int>::iterator it = salary.begin(); it != salary.end(); it++) {
 		if (min > *it) min = *it;
 		if (max < *it) max = *it;
-		
+
 		sum += *it;
 	}
 
 	return (sum - max - min) / (salary.size() - 2);
+}
+
+int Solutions::hammingWeight(uint32_t n) {
+	int count = 0;
+
+	while (n > 0) {
+		if (n % 2 != 0)count++;
+		n /= 2;
+	}
+
+	return count;
+}
+
+int Solutions::subtractProductAndSum(int n) {
+	int sum = 0;
+	int product = 1;
+
+	while (n > 0) {
+		sum += n % 10;
+		product *= n % 10;
+
+		n /= 10;
+	}
+
+	return product - sum;
 }

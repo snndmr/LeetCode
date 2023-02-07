@@ -181,6 +181,14 @@ class Solutions {
 	static int countOdds(int low, int high);
 
 	/// <summary>No: 91</summary>
-	/// <see href="https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/">1491. Average Salary Excluding the Minimum and Maximum Salary/see>
+	/// <see href="https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/">1491. Average Salary Excluding the Minimum and Maximum Salary</see>
 	static double average(std::vector<int>& salary);
+
+	/// <summary>No: 92</summary>
+	/// <see href="https://leetcode.com/problems/number-of-1-bits/">191. Number of 1 Bits</see>
+	static int hammingWeight(uint32_t n);
+
+	/// <summary>No: 93</summary>
+	/// <see href="https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/">1281. Subtract the Product and Sum of Digits of an Integer</see>
+	static int subtractProductAndSum(int n);
 };
