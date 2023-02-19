@@ -191,4 +191,44 @@ class Solutions {
 	/// <summary>No: 93</summary>
 	/// <see href="https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/">1281. Subtract the Product and Sum of Digits of an Integer</see>
 	static int subtractProductAndSum(int n);
+
+	/// <summary>No: 94</summary>
+	/// <see href="https://leetcode.com/problems/largest-perimeter-triangle/">976. Largest Perimeter Triangle</see>
+	static int largestPerimeter(std::vector<int>& nums);
+
+	/// <summary>No: 95</summary>
+	/// <see href="https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/">1779. Find Nearest Point That Has the Same X or Y Coordinate</see>
+	static int nearestValidPoint(int x, int y, std::vector<std::vector<int>>& points);
+
+	/// <summary>No: 96</summary>
+	/// <see href="https://leetcode.com/problems/sign-of-the-product-of-an-array/">1822. Sign of the Product of an Array</see>
+	static int arraySign(std::vector<int>& nums);
+
+	/// <summary>No: 97</summary>
+	/// <see href="https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/">1502. Can Make Arithmetic Progression From Sequence</see>
+	static bool canMakeArithmeticProgression(std::vector<int>& arr);
+
+	/// <summary>No: 98</summary>
+	/// <see href="https://leetcode.com/problems/guess-number-higher-or-lower/">374. Guess Number Higher or Lower</see>
+	/**
+	 * Forward declaration of guess API.
+	 * @param  num   your guess
+	 * @return 	     -1 if num is higher than the picked number
+	 *			      1 if num is lower than the picked number
+	 *               otherwise return 0
+	 * int guess(int num);
+	 */
+	static int guess(int num);
+	static int guessNumber(int n);
+
+	/// <summary>No: 99</summary>
+	/// <see href="https://leetcode.com/problems/first-bad-version/">278. First Bad Version</see>
+	// The API isBadVersion is defined for you.
+	// bool isBadVersion(int version);
+	static bool isBadVersion(int version);
+	static int firstBadVersion(int n);
+
+	/// <summary>No: 100</summary>
+	/// <see href="https://leetcode.com/problems/search-insert-position/">Search Insert Position</see>
+	static int searchInsert(std::vector<int>& nums, int target);
 };

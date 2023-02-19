@@ -743,3 +743,125 @@ int Solutions::subtractProductAndSum(int n) {
 
 	return product - sum;
 }
+
+int Solutions::largestPerimeter(std::vector<int>& nums) {
+	std::sort(nums.begin(), nums.end());
+
+	for (std::vector<int>::iterator it = nums.end() - 1; it != nums.begin() + 1; it--) {
+		if (*it < *(it - 1) + *(it - 2)) {
+			return *it + *(it - 1) + *(it - 2);
+		}
+	}
+
+	return 0;
+}
+
+int Solutions::nearestValidPoint(int x, int y, std::vector<std::vector<int>>& points) {
+	int min = INT_MAX;
+	int smallestIndex = -1;
+
+	for (size_t i = 0; i < points.size(); i++) {
+		if (x == points[i][0] && y == points[i][1]) {
+			return i;
+		} else if (x == points[i][0] && min > abs(y - points[i][1])) {
+			min = abs(y - points[i][1]);
+			smallestIndex = i;
+		} else if (y == points[i][1] && min > abs(x - points[i][0])) {
+			min = abs(x - points[i][0]);
+			smallestIndex = i;
+		}
+	}
+
+	return smallestIndex;
+}
+
+int Solutions::arraySign(std::vector<int>& nums) {
+	bool sign = true;
+
+	for (std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
+		if (*it == 0) return 0;
+		if (*it < 0) sign = !sign;
+	}
+
+	return sign ? 1 : -1;
+}
+
+bool Solutions::canMakeArithmeticProgression(std::vector<int>& arr) {
+	std::sort(arr.begin(), arr.end());
+	int diff = arr.at(1) - arr.at(0);
+
+	for (size_t i = 0; i < arr.size() - 1; i++) {
+		if (arr[i] + diff != arr[i + 1]) return false;
+	}
+
+	return true;
+}
+
+int Solutions::guess(int num) {
+	return 0;
+}
+
+int Solutions::guessNumber(int n) {
+	unsigned l = 1;
+	unsigned r = n;
+	unsigned m = (l + r) / 2;
+
+	while (l < r) {
+		int result = guess(m);
+
+		if (result < 0) r = m - 1;
+		else if (result > 0) l = m + 1;
+		else break;
+
+		m = (l + r) / 2;
+	}
+
+	return m;
+}
+
+bool Solutions::isBadVersion(int version) {
+	return false;
+}
+
+int Solutions::firstBadVersion(int n) {
+	unsigned l = 1;
+	unsigned r = n;
+	unsigned m = (l + r) / 2;
+
+	while (l < r) {
+		if (isBadVersion(m))
+			r = m;
+		else
+			l = m + 1;
+
+		m = (l + r) / 2;
+	}
+
+	return m;
+}
+
+int Solutions::searchInsert(std::vector<int>& nums, int target) {
+	unsigned l = 0;
+	unsigned r = nums.size() - 1;
+	unsigned m = (l + r) / 2;
+
+	while (l <= r) {
+		if (target < nums[l]) {
+			return l;
+		} else if (target > nums[r]) {
+			return r + 1;
+		}
+
+		if (nums[m] > target) {
+			r = m;
+		} else if (nums[m] < target) {
+			l = m + 1;
+		} else {
+			break;
+		}
+
+		m = (l + r) / 2;
+	}
+
+	return m;
+}
