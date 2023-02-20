@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-50", "1-50", "{35297D83-1
 		Archive\1-50\Solutions.h = Archive\1-50\Solutions.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "51-100", "51-100", "{88968C13-E32C-4F7E-8FB3-50526954AC65}"
+	ProjectSection(SolutionItems) = preProject
+		Archive\51-100\Solutions.cpp = Archive\51-100\Solutions.cpp
+		Archive\51-100\Solutions.h = Archive\51-100\Solutions.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -35,6 +41,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{35297D83-1D9E-4C05-B8A5-8222075DF27B} = {1528072A-E610-43E0-B81C-13AA35230448}
+		{88968C13-E32C-4F7E-8FB3-50526954AC65} = {1528072A-E610-43E0-B81C-13AA35230448}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92A7D46F-A3F1-4B13-8B77-0450AB27DF6A}
