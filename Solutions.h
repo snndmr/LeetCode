@@ -3,9 +3,10 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 class Solutions {
-	public:
+public:
 
 	/// <summary>No: 101</summary>
 	/// <see href="https://leetcode.com/problems/squares-of-a-sorted-array/">977. Squares of a Sorted Array</see>
@@ -26,5 +27,9 @@ class Solutions {
 	/// <summary>No: 105</summary>
 	/// <see href="https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/">1790. Check if One String Swap Can Make Strings Equal</see>
 	static bool areAlmostEqual(std::string s1, std::string s2);
+
+	/// <summary>No: 106</summary>
+	/// <see href="https://leetcode.com/problems/longest-common-prefix/description/">14. Longest Common Prefix</see>
+	static std::string longestCommonPrefix(std::vector<std::string>& strs);
 };
 

@@ -14,7 +14,8 @@ std::vector<int> Solutions::sortedSquares(std::vector<int>& nums) {
 			}
 
 			left++;
-		} else {
+		}
+		else {
 			squares.insert(squares.begin(), static_cast<int>(pow(*right, 2)));
 
 			if (right == nums.begin()) {
@@ -71,15 +72,17 @@ void Solutions::moveZeroes(std::vector<int>& nums) {
 
 int Solutions::peakIndexInMountainArray(std::vector<int>& arr) {
 	int beg = 0;
-	int end = arr.size() - 1;
+	int end = static_cast<int>(arr.size() - 1);
 	int mid = (beg + end) / 2;
 
 	while (beg < end) {
 		if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {
 			break;
-		} else if (arr[mid] > arr[mid - 1]) {
+		}
+		else if (arr[mid] > arr[mid - 1]) {
 			beg = mid;
-		} else {
+		}
+		else {
 			end = mid;
 		}
 
@@ -91,7 +94,7 @@ int Solutions::peakIndexInMountainArray(std::vector<int>& arr) {
 
 bool Solutions::areAlmostEqual(std::string s1, std::string s2) {
 	int diff = 0;
-	char holdOne, holdTwo {};
+	char holdOne, holdTwo{};
 
 	for (size_t i = 0; i < s1.size(); i++) {
 		if (s1[i] != s2[i]) {
@@ -106,4 +109,60 @@ bool Solutions::areAlmostEqual(std::string s1, std::string s2) {
 	}
 
 	return diff == 0 || diff == 2;
+}
+
+std::string Solutions::longestCommonPrefix(std::vector<std::string>& strs)
+{
+	/*Time Complexity : O(n^2) and with sorting */
+	/*if (strs.size() == 1)
+	{
+		return strs[0];
+	}
+
+	std::sort(strs.begin(), strs.end(), [](const std::string& a, const std::string& b)
+		{
+			return a.size() < b.size();
+		});
+
+	std::string longestPrefix = strs[0];
+
+	for (unsigned i = 1; i < strs.size(); i++)
+	{
+		for (unsigned j = 0; j < longestPrefix.size(); j++)
+		{
+			if (strs[i][j] != longestPrefix[j])
+			{
+				longestPrefix.erase(j);
+			}
+
+			if (longestPrefix.empty())
+			{
+				return longestPrefix;
+			}
+		}
+	}
+
+	return longestPrefix;*/
+
+	/*Time Complexity : O(n^2) and without sorting */
+	if (strs.size() == 1)
+	{
+		return strs[0];
+	}
+
+	std::string longestPrefix = strs[0];
+
+	for (int i = 1; i < strs.size(); i++)
+	{
+		while (strs[i].find(longestPrefix) != 0)
+		{
+			longestPrefix = longestPrefix.substr(0, longestPrefix.length() - 1);
+			if (longestPrefix.empty())
+			{
+				return "";
+			}
+		}
+	}
+
+	return longestPrefix;
 }
