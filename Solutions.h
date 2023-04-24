@@ -1,16 +1,14 @@
 #pragma once
 
-#include <map>
 #include <vector>
 #include <string>
-#include <algorithm>
 
 class Solutions {
 public:
 
 	/// <summary>No: 101</summary>
 	/// <see href="https://leetcode.com/problems/squares-of-a-sorted-array/">977. Squares of a Sorted Array</see>
-	static std::vector<int> sortedSquares(std::vector<int>& nums);
+	static std::vector<int> SortedSquares(std::vector<int>& nums);
 
 	/// <summary>No: 102</summary>
 	/// <see href="https://leetcode.com/problems/rotate-array/">189. Rotate Array</see>
@@ -18,18 +16,26 @@ public:
 
 	/// <summary>No: 103</summary>
 	/// <see href="https://leetcode.com/problems/move-zeroes/">283. Move Zeroes</see>
-	static void moveZeroes(std::vector<int>& nums);
+	static void MoveZeroes(std::vector<int>& nums);
 
 	/// <summary>No: 104</summary>
 	/// <see href="https://leetcode.com/problems/peak-index-in-a-mountain-array/">852. Peak Index in a Mountain Array</see>
-	static int peakIndexInMountainArray(std::vector<int>& arr);
+	static int PeakIndexInMountainArray(const std::vector<int>& arr);
 
 	/// <summary>No: 105</summary>
 	/// <see href="https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/">1790. Check if One String Swap Can Make Strings Equal</see>
-	static bool areAlmostEqual(std::string s1, std::string s2);
+	static bool AreAlmostEqual(const std::string& s1, const std::string& s2);
 
 	/// <summary>No: 106</summary>
 	/// <see href="https://leetcode.com/problems/longest-common-prefix/description/">14. Longest Common Prefix</see>
-	static std::string longestCommonPrefix(std::vector<std::string>& strs);
+	static std::string LongestCommonPrefix(std::vector<std::string>& strs);
+
+	/// <summary>No: 107</summary>
+	/// <see href="https://leetcode.com/problems/merge-strings-alternately/description/">1768. Merge Strings Alternately</see>
+	static std::string MergeAlternately(std::string word1, std::string word2);
+
+	/// <summary>No: 108</summary>
+	/// <see href="https://leetcode.com/problems/valid-parentheses/">20. Valid Parentheses</see>
+	static bool IsValid(const std::string& s);
 };
 
