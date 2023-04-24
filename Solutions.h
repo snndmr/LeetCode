@@ -37,5 +37,13 @@ public:
 	/// <summary>No: 108</summary>
 	/// <see href="https://leetcode.com/problems/valid-parentheses/">20. Valid Parentheses</see>
 	static bool IsValid(const std::string& s);
+
+	/// <summary>No: 109</summary>
+	/// <see href="https://leetcode.com/problems/pascals-triangle/">118. Pascal's Triangle</see>
+	static std::vector<std::vector<int>> generate(int num_rows);
+
+	/// <summary>No: 110</summary>
+	/// <see href="https://leetcode.com/problems/single-number/">136. Single Number</see>
+	static int SingleNumber(const std::vector<int>& nums);
 };
 

@@ -1,3 +1,8 @@
 #include "Solutions.h"
 
-int main() {}
+int main()
+{
+
+	Solutions::generate(30);
+
+}

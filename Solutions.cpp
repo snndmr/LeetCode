@@ -226,3 +226,44 @@ bool Solutions::IsValid(const std::string& s)
 
 	return left_operators.empty();
 }
+
+std::vector<std::vector<int>> Solutions::generate(const int num_rows)
+{
+	if (num_rows == 1)
+	{
+		return { { 1 } };
+	}
+
+	if (num_rows == 2)
+	{
+		return { { 1 }, { 1, 1 } };
+	}
+
+	std::vector<std::vector<int>> triangle = { { 1 }, { 1, 1 } };
+
+	for (int i = 2; i < num_rows; i++)
+	{
+		triangle.push_back({ 1 });
+
+		for (size_t j = 0; j < triangle[i - 1].size() - 1; j++)
+		{
+			triangle.at(i).push_back(triangle[i - 1][j] + triangle[i - 1][j + 1]);
+		}
+
+		triangle[i].push_back(1);
+	}
+
+	return triangle;
+}
+
+int Solutions::SingleNumber(const std::vector<int>& nums)
+{
+	int result = 0;
+
+	for (const int num : nums)
+	{
+		result ^= num;
+	}
+
+	return result;
+}
