@@ -45,5 +45,19 @@ public:
 	/// <summary>No: 110</summary>
 	/// <see href="https://leetcode.com/problems/single-number/">136. Single Number</see>
 	static int SingleNumber(const std::vector<int>& nums);
+
+	/// <summary>No: 111</summary>
+	/// <see href="https://leetcode.com/problems/intersection-of-two-linked-lists/">160. Intersection of Two Linked Lists</see>
+	//	Definition for singly-linked list.
+	struct ListNode {
+		int val;
+		ListNode* next;
+		explicit ListNode(const int x) : val(x), next(nullptr) {}
+	};
+	static ListNode* GetIntersectionNode(ListNode* head_a, ListNode* head_b);
+
+	/// <summary>No: 112</summary>
+	/// <see href="https://leetcode.com/problems/linked-list-cycle/">141. Linked List Cycle </see>
+	static bool HasCycle(ListNode *head);
 };
 

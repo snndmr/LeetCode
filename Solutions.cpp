@@ -1,6 +1,8 @@
 #include "Solutions.h"
 
+#include <map>
 #include <stack>
+#include <unordered_map>
 
 std::vector<int> Solutions::SortedSquares(std::vector<int>& nums) {
 	std::vector<int> squares;
@@ -266,4 +268,61 @@ int Solutions::SingleNumber(const std::vector<int>& nums)
 	}
 
 	return result;
+}
+
+Solutions::ListNode* Solutions::GetIntersectionNode(ListNode* head_a, ListNode* head_b)
+{
+	std::unordered_map<ListNode*, bool> look_up;
+
+	for (ListNode* it = head_a; it != nullptr; it = it->next)
+	{
+		look_up[it] = true;
+	}
+
+	for (ListNode* it = head_b; it != nullptr; it = it->next)
+	{
+		if (look_up[it])
+		{
+			return it;
+		}
+	}
+
+	return nullptr;
+}
+
+bool Solutions::HasCycle(ListNode* head)
+{
+	// Time Complexity : O(n) | Space Complexity : O(n)
+	/*std::unordered_map<ListNode*, bool> look_up;
+
+	for (ListNode* it = head; it != nullptr; it = it->next)
+	{
+		if (look_up[it])
+		{
+			return true;
+		}
+
+		look_up[it] = true;
+	}
+
+	return false;*/
+	// Time Complexity : O(n) | Space Complexity : O(1)
+
+	if (head == nullptr || head->next == nullptr) {
+		return false;
+	}
+
+	const ListNode* slow = head;
+	const ListNode* fast = head->next;
+
+	while (slow != fast) {
+		if (fast == nullptr || fast->next == nullptr) {
+			return false;
+		}
+
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	return true;
 }
