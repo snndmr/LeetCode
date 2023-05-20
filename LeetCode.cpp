@@ -2,7 +2,7 @@
 
 int main()
 {
-
-	Solutions::generate(30);
+	std::vector<int> a{ 1,2,3 };
+	Solutions::permute(a);
 
 }

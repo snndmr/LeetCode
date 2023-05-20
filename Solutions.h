@@ -57,7 +57,11 @@ public:
 	static ListNode* GetIntersectionNode(ListNode* head_a, ListNode* head_b);
 
 	/// <summary>No: 112</summary>
-	/// <see href="https://leetcode.com/problems/linked-list-cycle/">141. Linked List Cycle </see>
-	static bool HasCycle(ListNode *head);
+	/// <see href="https://leetcode.com/problems/linked-list-cycle/">141. Linked List Cycle</see>
+	static bool HasCycle(const ListNode *head);
+
+	/// <summary>No: 113</summary>
+	/// <see href="https://leetcode.com/problems/permutations/">46. Permutations</see>
+	static std::vector<std::vector<int>> permute(const std::vector<int>& nums);
 };
 

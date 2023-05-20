@@ -290,7 +290,7 @@ Solutions::ListNode* Solutions::GetIntersectionNode(ListNode* head_a, ListNode* 
 	return nullptr;
 }
 
-bool Solutions::HasCycle(ListNode* head)
+bool Solutions::HasCycle(const ListNode* head)
 {
 	// Time Complexity : O(n) | Space Complexity : O(n)
 	/*std::unordered_map<ListNode*, bool> look_up;
@@ -325,4 +325,32 @@ bool Solutions::HasCycle(ListNode* head)
 	}
 
 	return true;
+}
+
+std::vector<std::vector<int>> Solutions::permute(const std::vector<int>& nums)	// 1 2 3
+{
+	const size_t size = nums.size();
+	std::vector<std::vector<int>> result;
+
+	for (size_t k = 0; k < size - 1; k++)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			std::vector<int> instant{ static_cast<int>(nums[i]) };
+
+			for (size_t j = 0; j < size; j += 1)
+			{
+				if ((j + k + 1) % size == i)
+				{
+					j++;
+				}
+
+				instant.push_back(nums[(j + k + 1) % size]);
+			}
+
+			result.push_back(instant);
+		}
+	}
+
+	return result;
 }
