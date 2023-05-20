@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class Solutions {
 public:
@@ -58,10 +58,18 @@ public:
 
 	/// <summary>No: 112</summary>
 	/// <see href="https://leetcode.com/problems/linked-list-cycle/">141. Linked List Cycle</see>
-	static bool HasCycle(const ListNode *head);
+	static bool HasCycle(const ListNode* head);
 
 	/// <summary>No: 113</summary>
 	/// <see href="https://leetcode.com/problems/permutations/">46. Permutations</see>
 	static std::vector<std::vector<int>> permute(const std::vector<int>& nums);
+
+	/// <summary>No: 114</summary>
+	/// <see href="https://leetcode.com/problems/reverse-string/">344. Reverse String</see>
+	static void reverseString(std::vector<char>& s);
+
+	/// <summary>No: 115</summary>
+	/// <see href="https://leetcode.com/problems/fizz-buzz/">412. Fizz Buzz</see>
+	static std::vector<std::string> fizzBuzz(int n);
 };
 

@@ -354,3 +354,40 @@ std::vector<std::vector<int>> Solutions::permute(const std::vector<int>& nums)	/
 
 	return result;
 }
+
+void Solutions::reverseString(std::vector<char>& s)
+{
+	const size_t size = s.size();
+
+	for (size_t i = 0; i < size / 2; i++)
+	{
+		std::swap(s[i], s[size - i - 1]);
+	}
+}
+
+std::vector<std::string> Solutions::fizzBuzz(int n)
+{
+	std::vector<std::string> result;
+
+	for (int i = 1; i < n + 1; i++)
+	{
+		if (i % 3 == 0 && i % 5 == 0)
+		{
+			result.push_back("FizzBuzz");
+		}
+		else if (i % 3 == 0)
+		{
+			result.push_back("Fizz");
+		}
+		else if (i % 5 == 0)
+		{
+			result.push_back("Buzz");
+		}
+		else
+		{
+			result.push_back(std::to_string(i));
+		}
+	}
+
+	return result;
+}
