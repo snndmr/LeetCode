@@ -391,3 +391,23 @@ std::vector<std::string> Solutions::fizzBuzz(int n)
 
 	return result;
 }
+
+int Solutions::removeDuplicates(std::vector<int>& nums)
+{
+	std::unordered_set<int> uniqueNums;
+
+	for (std::vector<int>::iterator it = nums.begin(); it != nums.end();)
+	{
+		if (uniqueNums.find(*it) != uniqueNums.end())
+		{
+			it = nums.erase(it);
+		}
+		else
+		{
+			uniqueNums.insert(*it);
+			it++;
+		}
+	}
+
+	return uniqueNums.size();
+}

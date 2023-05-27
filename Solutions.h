@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_set>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -71,5 +73,9 @@ public:
 	/// <summary>No: 115</summary>
 	/// <see href="https://leetcode.com/problems/fizz-buzz/">412. Fizz Buzz</see>
 	static std::vector<std::string> fizzBuzz(int n);
+
+	/// <summary>No: 116</summary>
+	/// <see href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/">26. Remove Duplicates from Sorted Array</see>
+	static int removeDuplicates(std::vector<int>& nums);
 };
 
