@@ -81,5 +81,9 @@ public:
 	/// <summary>No: 117</summary>
 	/// <see href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/">28. Find the Index of the First Occurrence in a String</see>
 	static int strStr(std::string haystack, std::string needle);
+
+	/// <summary>No: 118</summary>
+	/// <see href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x)</see>
+	static int mySqrt(int x);
 };
 
