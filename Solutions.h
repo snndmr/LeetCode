@@ -77,5 +77,9 @@ public:
 	/// <summary>No: 116</summary>
 	/// <see href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/">26. Remove Duplicates from Sorted Array</see>
 	static int removeDuplicates(std::vector<int>& nums);
+
+	/// <summary>No: 117</summary>
+	/// <see href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/">28. Find the Index of the First Occurrence in a String</see>
+	static int strStr(std::string haystack, std::string needle);
 };
 

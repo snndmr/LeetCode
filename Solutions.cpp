@@ -411,3 +411,64 @@ int Solutions::removeDuplicates(std::vector<int>& nums)
 
 	return uniqueNums.size();
 }
+
+int Solutions::strStr(std::string haystack, std::string needle)
+{
+	const size_t needleSize = needle.size();
+	const size_t haystackSize = haystack.size();
+
+	for (size_t i = 0; i < haystackSize; i++)
+	{
+		if (haystack[i] == needle[0])
+		{
+			if (needleSize == 1) 
+			{
+				return i;
+			}
+
+			for (size_t j = 1; j < needleSize; j++)
+			{
+				if (haystack[i + j] != needle[j])
+				{
+					break;
+				}
+
+				if (j == needleSize - 1)
+				{
+					return i;
+				}
+			}
+		}
+	}
+
+	return -1;
+}
+
+int Solutions::mySqrt(int x)
+{
+	if (x == 0 || x == 1)
+	{
+		return x;
+	}
+
+	int left = 1;
+	int right = x;
+	int result;
+
+	while (left <= right)
+	{
+		int mid = left + (right - left) / 2;
+
+		if (mid <= x / mid)
+		{
+			left = mid + 1;
+			result = mid;
+		}
+		else
+		{
+			right = mid - 1;
+		}
+	}
+
+	return result;
+}
