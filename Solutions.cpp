@@ -2,6 +2,7 @@
 
 #include <map>
 #include <stack>
+#include <numeric>
 #include <unordered_map>
 
 std::vector<int> Solutions::SortedSquares(std::vector<int>& nums) {
@@ -36,21 +37,6 @@ std::vector<int> Solutions::SortedSquares(std::vector<int>& nums) {
 void Solutions::rotate(std::vector<int>& nums, const int k) {
 	const size_t size = nums.size();
 
-	/* Time O(N^2) Space O(1) */
-	//if (size > 1 && k % size != 0) {
-	//	for (size_t i = 0; i < k % size; i++) {
-	//		int tempA = nums.at(0);
-	//		nums.at(0) = nums.at(size - 1);
-
-	//		for (size_t i = 1; i < size; i++) {
-	//			int tempB = nums[i];
-	//			nums[i] = tempA;
-	//			tempA = tempB;
-	//		}
-	//	}
-	//}
-
-	/* Time O(N) Space O(N) */
 	if (size > 1 && k % size != 0) {
 		const unsigned piece = k % size;
 
@@ -76,7 +62,7 @@ void Solutions::MoveZeroes(std::vector<int>& nums) {
 
 int Solutions::PeakIndexInMountainArray(const std::vector<int>& arr) {
 	int beg = 0;
-	int end = static_cast<int>(arr.size() - 1);
+	auto end = static_cast<int>(arr.size() - 1);
 	int mid = (beg + end) / 2;
 
 	while (beg < end) {
@@ -98,7 +84,8 @@ int Solutions::PeakIndexInMountainArray(const std::vector<int>& arr) {
 
 bool Solutions::AreAlmostEqual(const std::string& s1, const std::string& s2) {
 	int diff = 0;
-	char hold_one = 0, hold_two = 0;
+	char hold_one = 0; 
+	char hold_two = 0;
 
 	for (size_t i = 0; i < s1.size(); i++) {
 		if (s1[i] != s2[i]) {
@@ -117,38 +104,6 @@ bool Solutions::AreAlmostEqual(const std::string& s1, const std::string& s2) {
 
 std::string Solutions::LongestCommonPrefix(std::vector<std::string>& strs)
 {
-	/*Time Complexity : O(n^2) and with sorting */
-	/*if (strs.size() == 1)
-	{
-		return strs[0];
-	}
-
-	std::sort(strs.begin(), strs.end(), [](const std::string& a, const std::string& b)
-		{
-			return a.size() < b.size();
-		});
-
-	std::string longestPrefix = strs[0];
-
-	for (unsigned i = 1; i < strs.size(); i++)
-	{
-		for (unsigned j = 0; j < longestPrefix.size(); j++)
-		{
-			if (strs[i][j] != longestPrefix[j])
-			{
-				longestPrefix.erase(j);
-			}
-
-			if (longestPrefix.empty())
-			{
-				return longestPrefix;
-			}
-		}
-	}
-
-	return longestPrefix;*/
-
-	/*Time Complexity : O(n^2) and without sorting */
 	if (strs.size() == 1)
 	{
 		return strs[0];
@@ -292,22 +247,6 @@ Solutions::ListNode* Solutions::GetIntersectionNode(ListNode* head_a, ListNode* 
 
 bool Solutions::HasCycle(const ListNode* head)
 {
-	// Time Complexity : O(n) | Space Complexity : O(n)
-	/*std::unordered_map<ListNode*, bool> look_up;
-
-	for (ListNode* it = head; it != nullptr; it = it->next)
-	{
-		if (look_up[it])
-		{
-			return true;
-		}
-
-		look_up[it] = true;
-	}
-
-	return false;*/
-	// Time Complexity : O(n) | Space Complexity : O(1)
-
 	if (head == nullptr || head->next == nullptr) {
 		return false;
 	}
@@ -336,7 +275,7 @@ std::vector<std::vector<int>> Solutions::permute(const std::vector<int>& nums)	/
 	{
 		for (size_t i = 0; i < size; i++)
 		{
-			std::vector<int> instant{ static_cast<int>(nums[i]) };
+			std::vector<int> instant{ nums[i] };
 
 			for (size_t j = 0; j < size; j += 1)
 			{
@@ -373,19 +312,19 @@ std::vector<std::string> Solutions::fizzBuzz(int n)
 	{
 		if (i % 3 == 0 && i % 5 == 0)
 		{
-			result.push_back("FizzBuzz");
+			result.emplace_back("FizzBuzz");
 		}
 		else if (i % 3 == 0)
 		{
-			result.push_back("Fizz");
+			result.emplace_back("Fizz");
 		}
 		else if (i % 5 == 0)
 		{
-			result.push_back("Buzz");
+			result.emplace_back("Buzz");
 		}
 		else
 		{
-			result.push_back(std::to_string(i));
+			result.emplace_back(std::to_string(i));
 		}
 	}
 
@@ -396,7 +335,7 @@ int Solutions::removeDuplicates(std::vector<int>& nums)
 {
 	std::unordered_set<int> uniqueNums;
 
-	for (std::vector<int>::iterator it = nums.begin(); it != nums.end();)
+	for (auto it = nums.begin(); it != nums.end();)
 	{
 		if (uniqueNums.find(*it) != uniqueNums.end())
 		{
@@ -409,7 +348,7 @@ int Solutions::removeDuplicates(std::vector<int>& nums)
 		}
 	}
 
-	return uniqueNums.size();
+	return static_cast<int>(uniqueNums.size());
 }
 
 int Solutions::strStr(std::string haystack, std::string needle)
@@ -421,9 +360,9 @@ int Solutions::strStr(std::string haystack, std::string needle)
 	{
 		if (haystack[i] == needle[0])
 		{
-			if (needleSize == 1) 
+			if (needleSize == 1)
 			{
-				return i;
+				return static_cast<int>(i);
 			}
 
 			for (size_t j = 1; j < needleSize; j++)
@@ -435,7 +374,7 @@ int Solutions::strStr(std::string haystack, std::string needle)
 
 				if (j == needleSize - 1)
 				{
-					return i;
+					return static_cast<int>(i);
 				}
 			}
 		}
@@ -453,7 +392,7 @@ int Solutions::mySqrt(int x)
 
 	int left = 1;
 	int right = x;
-	int result;
+	int result = 0;
 
 	while (left <= right)
 	{
@@ -471,4 +410,61 @@ int Solutions::mySqrt(int x)
 	}
 
 	return result;
+}
+
+void Solutions::merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n)
+{
+	if (nums1.empty())
+	{
+		nums1 = nums2;
+		return;
+	}
+
+	if (nums2.empty())
+	{
+		return;
+	}
+
+	for (int i = 0, j = 0; i < m + n; i++)
+	{
+		if (nums2[j] < nums1[i])
+		{
+			nums1.insert(nums1.begin() + i, nums2[j]);
+			nums1.pop_back();
+
+			j += 1;
+		}
+		else if (i >= m + j && nums1[i] == 0)
+		{
+			nums1[i] = nums2[j];
+
+			j += 1;
+		}
+
+		if (j == n)
+		{
+			break;
+		}
+	}
+}
+
+int Solutions::majorityElement(std::vector<int>& nums)
+{
+	std::unordered_map<int, uint16_t> lookUp;
+
+	for (auto num : nums) {
+		lookUp[num]++;
+	}
+
+	int mode = nums[0];
+	int max = 0;
+
+	for (auto pair : lookUp) {
+		if (max < pair.second) {
+			max = pair.second;
+			mode = pair.first;
+		}
+	}
+
+	return mode;
 }

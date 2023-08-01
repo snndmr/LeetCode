@@ -85,5 +85,13 @@ public:
 	/// <summary>No: 118</summary>
 	/// <see href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x)</see>
 	static int mySqrt(int x);
+
+	/// <summary>No: 119</summary>
+	/// <see href="https://leetcode.com/problems/merge-sorted-array/">88. Merge Sorted Array</see>
+	static void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
+
+	/// <summary>No: 120</summary>
+	/// <see href="https://leetcode.com/problems/majority-element/">169. Majority Element</see>
+	static int majorityElement(std::vector<int>& nums);
 };
 
