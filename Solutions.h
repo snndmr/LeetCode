@@ -93,5 +93,14 @@ public:
 	/// <summary>No: 120</summary>
 	/// <see href="https://leetcode.com/problems/majority-element/">169. Majority Element</see>
 	static int majorityElement(std::vector<int>& nums);
+
+	/// <summary>No: 121</summary>
+	/// <see href="https://leetcode.com/problems/remove-element/">27. Remove Element</see>
+	static int removeElement(std::vector<int>& nums, int val);
+
+	/// <summary>No: 122</summary>
+	/// <see href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/">80. Remove Duplicates from Sorted Array II</see>
+	static int removeDuplicates_(std::vector<int>& nums);
 };
 
+	

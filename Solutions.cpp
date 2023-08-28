@@ -84,7 +84,7 @@ int Solutions::PeakIndexInMountainArray(const std::vector<int>& arr) {
 
 bool Solutions::AreAlmostEqual(const std::string& s1, const std::string& s2) {
 	int diff = 0;
-	char hold_one = 0; 
+	char hold_one = 0;
 	char hold_two = 0;
 
 	for (size_t i = 0; i < s1.size(); i++) {
@@ -467,4 +467,48 @@ int Solutions::majorityElement(std::vector<int>& nums)
 	}
 
 	return mode;
+}
+
+int Solutions::removeElement(std::vector<int>& nums, int val)
+{
+	if (val >= 50)
+	{
+		return (int)nums.size();
+	}
+
+	int k = 0;
+
+	for (int num : nums)
+	{
+		if (num != val)
+		{
+			nums[k] = num;
+			k++;
+		}
+	}
+
+	return k;
+}
+
+int Solutions::removeDuplicates_(std::vector<int>& nums)
+{
+	std::unordered_map<int, bool> dict;
+	int k = 0;
+
+	for (int num : nums) {
+		if (dict.find(num) == dict.end())
+		{
+			dict[num] = false;
+			nums[k] = num;
+			k++;
+		}
+		else if (!dict[num])
+		{
+			dict[num] = true;
+			nums[k] = num;
+			k++;
+		}
+	}
+
+	return k;
 }
